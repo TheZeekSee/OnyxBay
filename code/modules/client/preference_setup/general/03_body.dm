@@ -91,8 +91,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	to_file(S["bgstate"], pref.bgstate)
 
 /datum/category_item/player_setup_item/general/body/sanitize_character(savefile/S)
-	if(!pref.species || !(pref.species in playable_species))
-		pref.species = SPECIES_HUMAN
+	//if(!pref.species || !(pref.species in playable_species))
+	//	pref.species = SPECIES_HUMAN
 	pref.r_hair			= sanitize_integer(pref.r_hair, 0, 255, initial(pref.r_hair))
 	pref.g_hair			= sanitize_integer(pref.g_hair, 0, 255, initial(pref.g_hair))
 	pref.b_hair			= sanitize_integer(pref.b_hair, 0, 255, initial(pref.b_hair))

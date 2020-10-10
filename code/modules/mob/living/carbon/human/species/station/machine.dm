@@ -1,25 +1,23 @@
 /datum/species/machine
 	name = SPECIES_IPC
 	name_plural = "machines"
-
-	blurb = "Positronic intelligence really took off in the 26th century, and it is not uncommon to see independant, free-willed \
-	robots on many human stations, particularly in fringe systems where standards are slightly lax and public opinion less relevant \
-	to corporate operations. IPCs (Integrated Positronic Chassis) are a loose category of self-willed robots with a humanoid form, \
-	generally self-owned after being 'born' into servitude; they are reliable and dedicated workers, albeit more than slightly \
-	inhuman in outlook and perspective."
-
 	icobase = 'icons/mob/human_races/r_machine.dmi'
 	deform = 'icons/mob/human_races/r_machine.dmi'
 
 	language = LANGUAGE_EAL
 	unarmed_types = list(/datum/unarmed_attack/punch)
-	rarity_value = 2
 	num_alternate_languages = 2
 	strength = STR_HIGH
 	name_language = LANGUAGE_EAL
 
 	min_age = 1
 	max_age = 90
+
+	blurb = "Positronic intelligence really took off in the 26th century, and it is not uncommon to see independant, free-willed \
+	robots on many human stations, particularly in fringe systems where standards are slightly lax and public opinion less relevant \
+	to corporate operations. IPCs (Integrated Positronic Chassis) are a loose category of self-willed robots with a humanoid form, \
+	generally self-owned after being 'born' into servitude; they are reliable and dedicated workers, albeit more than slightly \
+	inhuman in outlook and perspective."
 
 	brute_mod = 1 // Because of the introduction of FBPs, IPCs are rebalanced back to 1.
 	burn_mod = 1  //

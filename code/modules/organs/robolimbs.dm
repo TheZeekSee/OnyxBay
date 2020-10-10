@@ -13,7 +13,7 @@ var/datum/robolimb/basic_robolimb
 /datum/robolimb
 	var/company = "Unbranded"                            // Shown when selecting the limb.
 	var/desc = "A generic unbranded robotic prosthesis." // Seen when examining a limb.
-	var/icon = 'icons/mob/human_races/robotic.dmi'       // Icon base to draw from.
+	var/icon = 'icons/mob/human_races/r_machine.dmi'       // Icon base to draw from.
 	var/unavailable_at_chargen                           // If set, not available at chargen.
 	var/unavailable_at_fab                               // If set, cannot be fabricated.
 	var/can_eat
