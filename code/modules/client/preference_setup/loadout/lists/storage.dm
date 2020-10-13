@@ -78,4 +78,3 @@
 	slot = slot_back
 	path = /obj/item/weapon/storage/backpack/santabag/fake
 	cost = 2
-	price = 20

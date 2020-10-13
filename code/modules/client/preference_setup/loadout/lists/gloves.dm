@@ -59,4 +59,3 @@
 /datum/gear/gloves/boxing
 	display_name = "boxing gloves"
 	path = /obj/item/clothing/gloves/boxing
-	price = 12
