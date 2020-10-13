@@ -150,7 +150,6 @@ var/list/gear_datums = list()
 	. += "<td style='width: 90%; text-align: right; vertical-align: top;'>"
 	var/current_opyxes = round(user.client.donator_info.opyxes)
 	. += "<b>You have <font color='#e67300'>[current_opyxes]</font> opyx[current_opyxes != 1 ? "es" : ""].</b><br>"
-	. += "<a class='gold' href='?src=\ref[src];get_opyxes=1'><b>Get opyxes</b></a><br>"
 	. += "</td>"
 
 	. += "</tr></table>"
