@@ -69,10 +69,8 @@
 /datum/gear/uniform/tactical/jumpsuit
 	display_name = "tactical jumpsuit"
 	path = /obj/item/clothing/under/tactical
-	price = 15
 
 /datum/gear/mask/balaclava
 	sort_category = "Tactical Equipment"
 	display_name = "balaclava"
-	path = /obj/item/clothing/mask/balaclava 
-	price = 25
+	path = /obj/item/clothing/mask/balaclava

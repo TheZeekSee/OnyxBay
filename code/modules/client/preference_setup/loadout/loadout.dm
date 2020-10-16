@@ -148,15 +148,8 @@ var/list/gear_datums = list()
 	. += "</td>"
 
 	. += "<td style='width: 90%; text-align: right; vertical-align: top;'>"
-
-	var/patron_tier = user.client.donator_info.get_full_patron_tier()
-	if(!patron_tier)
-		. += "<b>You are not a Patron yet.</b><br>"
-	else
-		. += "<b>Your Patreon tier is [patron_tier]</b><br>"
 	var/current_opyxes = round(user.client.donator_info.opyxes)
 	. += "<b>You have <font color='#e67300'>[current_opyxes]</font> opyx[current_opyxes != 1 ? "es" : ""].</b><br>"
-	. += "<a class='gold' href='?src=\ref[src];get_opyxes=1'><b>Get opyxes</b></a><br>"
 	. += "</td>"
 
 	. += "</tr></table>"
@@ -236,10 +229,8 @@ var/list/gear_datums = list()
 		entry += "</td></tr>"
 
 		if(!hide_unavailable_gear || allowed_to_see || ticked)
-			if(user.client.donator_info.has_item(G.type) || (G.patron_tier && user.client.donator_info.patreon_tier_available(G.patron_tier)))
+			if(user.client.donator_info.has_item(G.type))
 				purchased_gears += entry
-			else if(G.price || G.patron_tier)
-				paid_gears += entry
 			else
 				not_paid_gears += entry
 
@@ -296,7 +287,7 @@ var/list/gear_datums = list()
 					. += "<font color='#808080'>[J.title]</font>"
 			. += "</i>"
 			. += "<br>"
-		
+
 		if(selected_gear.whitelisted)
 			. += "<b>Has species restrictions!</b>"
 			. += "<br>"
@@ -321,16 +312,6 @@ var/list/gear_datums = list()
 			. += desc
 			. += "<br>"
 
-		if(selected_gear.patron_tier)
-			. += "<br>"
-			. += "<b>Patreon tier: [patron_tier_decorated(selected_gear.patron_tier)]</b>"
-			. += "<br>"
-
-		if(selected_gear.price)
-			. += "<br>"
-			. += "<b>Price: [selected_gear.price] opyx[selected_gear.price != 1 ? "es" : ""]</b>"
-			. += "<br>"
-
 		// Tweaks
 		if(selected_gear.gear_tweaks.len)
 			. += "<br><b>Options:</b><br>"
@@ -347,8 +328,6 @@ var/list/gear_datums = list()
 		if(gear_allowed_to_equip(selected_gear, user))
 			. += "<a [ticked ? "class='linkOn' " : ""]href='?src=\ref[src];toggle_gear=[html_encode(selected_gear.display_name)]'>[ticked ? "Drop" : "Take"]</a>"
 		else
-			if (selected_gear.price)
-				. += "<a class='gold' href='?src=\ref[src];buy_gear=\ref[selected_gear]'>Buy</a> "
 			var/trying_on = (pref.trying_on_gear == selected_gear.display_name)
 			. += "<a [trying_on ? "class='linkOn' " : ""]href='?src=\ref[src];try_on=1'>Try On</a>"
 
@@ -394,8 +373,7 @@ var/list/gear_datums = list()
 		var/datum/gear/TG = gear_datums[href_list["toggle_gear"]]
 
 		// check if someone trying to tricking us. However, it's may be just a bug
-		ASSERT(!TG.price || user.client.donator_info.has_item(TG.type))
-		ASSERT(!TG.patron_tier || user.client.donator_info.patreon_tier_available(TG.patron_tier))
+		ASSERT(user.client.donator_info.has_item(TG.type))
 
 		if(TG.display_name in pref.gear_list[pref.gear_slot])
 			pref.gear_list[pref.gear_slot] -= TG.display_name
@@ -422,20 +400,6 @@ var/list/gear_datums = list()
 		if(trying_on)
 			pref.trying_on_tweaks["[tweak]"] = metadata
 		return TOPIC_REFRESH_UPDATE_PREVIEW
-	if(href_list["buy_gear"])
-		var/datum/gear/G = locate(href_list["buy_gear"])
-		ASSERT(G.price)
-		ASSERT(!user.client.donator_info.has_item(G.type))
-		var/comment = "Donation store purchase: [G.type]"
-		var/transaction = SSdonations.create_transaction(user.client, -G.price, DONATIONS_TRANSACTION_TYPE_PURCHASE, comment)
-		if(transaction)
-			if(SSdonations.give_item(user.client, G.type, transaction))
-				pref.trying_on_gear = null
-				pref.trying_on_tweaks.Cut()
-				return TOPIC_REFRESH_UPDATE_PREVIEW
-			else
-				SSdonations.remove_transaction(user.client, transaction)
-		return TOPIC_NOACTION
 	if(href_list["try_on"])
 		if(!istype(selected_gear))
 			return TOPIC_NOACTION
@@ -540,7 +504,7 @@ var/list/gear_datums = list()
 	ASSERT(G)
 	if(!G.path)
 		return FALSE
-	
+
 	if(G.allowed_roles)
 		ASSERT(job_master)
 		var/list/jobs = new
@@ -556,20 +520,15 @@ var/list/gear_datums = list()
 				break
 		if(!job_ok)
 			return FALSE
-	
+
 	if(G.whitelisted && !(pref.species in G.whitelisted))
 		return FALSE
-		
+
 	return TRUE
 
 /datum/category_item/player_setup_item/loadout/proc/gear_allowed_to_equip(datum/gear/G, mob/user)
 	ASSERT(G)
 	ASSERT(user && user.client)
-	ASSERT(user.client.donator_info)
-	if(G.price && !user.client.donator_info.has_item(G.type))
-		return FALSE
-	if(G.patron_tier && !user.client.donator_info.patreon_tier_available(G.patron_tier))
-		return FALSE
 	return TRUE
 
 /datum/gear
@@ -577,8 +536,6 @@ var/list/gear_datums = list()
 	var/description        //Description of this gear. If left blank will default to the description of the pathed item.
 	var/path               //Path to item.
 	var/cost = 1           //Number of points used. Items in general cost 1 point, storage/armor/gloves/special use costs 2 points.
-	var/price              //Price of item, opyxes
-	var/patron_tier        //Patron tier restriction
 	var/slot               //Slot to equip to.
 	var/list/allowed_roles //Roles that can spawn with this item.
 	var/whitelisted        //Term to check the whitelist for..
