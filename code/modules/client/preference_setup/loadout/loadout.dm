@@ -372,9 +372,6 @@ var/list/gear_datums = list()
 	if(href_list["toggle_gear"])
 		var/datum/gear/TG = gear_datums[href_list["toggle_gear"]]
 
-		// check if someone trying to tricking us. However, it's may be just a bug
-		ASSERT(user.client.donator_info.has_item(TG.type))
-
 		if(TG.display_name in pref.gear_list[pref.gear_slot])
 			pref.gear_list[pref.gear_slot] -= TG.display_name
 		else
@@ -449,9 +446,6 @@ var/list/gear_datums = list()
 	if(href_list["toggle_hiding"])
 		hide_unavailable_gear = !hide_unavailable_gear
 		return TOPIC_REFRESH
-	if(href_list["get_opyxes"])
-		SSdonations.show_donations_info(user)
-		return TOPIC_NOACTION
 	return ..()
 
 /datum/category_item/player_setup_item/loadout/proc/randomize(mob/user)

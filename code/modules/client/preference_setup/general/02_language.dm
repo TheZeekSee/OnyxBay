@@ -16,6 +16,7 @@
 	sanitize_alt_languages()
 
 /datum/category_item/player_setup_item/general/language/content()
+	. = list()
 	. += "<b>Languages</b><br>"
 	var/datum/species/S = all_species[pref.species]
 	if(S.language)
