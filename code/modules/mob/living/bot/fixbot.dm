@@ -74,8 +74,6 @@
 
 /mob/living/bot/fixbot/update_icons()
 	overlays.Cut()
-	if(skin)
-		overlays += image('icons/obj/aibots.dmi', "medskin_[skin]")
 	if(busy)
 		icon_state = "medibots"
 	else
