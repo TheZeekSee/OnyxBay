@@ -251,7 +251,7 @@ var/list/gamemode_cache = list()
 	var/projectile_basketball
 
 	// Splash screen options
-	var/list/lobby_images = list('icons/splashes/onyx_old.png', 'icons/splashes/onyx_new.png')
+	var/list/lobby_images = list('icons/splashes/Hotline.gif')
 	var/current_lobbyscreen = null
 
 	var/db_uses_cp1251_encoding = FALSE
