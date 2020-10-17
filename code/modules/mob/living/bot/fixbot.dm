@@ -16,59 +16,59 @@
 
 /mob/living/bot/fixbot/handleIdle()
 	if(vocal && prob(1))
-		var/message = pick("Radar, put a mask on!", "There's always a catch, and it's the best there is.", "I knew it, I should've been a plastic surgeon.", "What kind of infirmary is this? Everyone's dropping like dead flies.", "Delicious!")
+		var/message = pick("I don't think it's a good idea to drink from the fuel tank", "Just f-f-fix it", "Created from the depths of the hell-ghetto", "Satis-F-Fixtion!")
 		say(message)
 
 /mob/living/bot/fixbot/handleAdjacentTarget()
 	UnarmedAttack(target)
 
 /mob/living/bot/fixbot/lookForTargets()
-	for(var/mob/living/carbon/human/H in view(7, src)) // Time to find a patient!
-		if(confirmTarget(H))
-			target = H
+	for(var/mob/living/L in view(7, src)) // Time to find a patient!
+		if(confirmTarget(L))
+			target = L
 			if(last_newpatient_speak + 300 < world.time)
-				var/message = pick("Hey, [H.name]! Hold on, I'm coming.", "Wait [H.name]! I want to help!", "[H.name], you appear to be injured!")
+				var/message = pick("Hey, [H.name]! I need to f-fix you!", "Wait [H.name]! Just get into a comfortable position!", "[H.name],It will take a lot of fuel to f-f-fix you")
 				say(message)
-				custom_emote(1, "points at [H.name].")
+				custom_emote(1, "points at [L.name].")
 				last_newpatient_speak = world.time
 			break
 
-/mob/living/bot/fixbot/UnarmedAttack(mob/living/carbon/human/H, proximity)
+/mob/living/bot/fixbot/UnarmedAttack(mob/living/L, proximity)
 	if(!..())
 		return
 
 	if(!on)
 		return
 
-	if(!istype(H))
+	if(!istype(L))
 		return
 
 	if(busy)
 		return
 
-	if(H.stat == DEAD)
-		var/death_message = pick("No! NO!", "Live, damnit! LIVE!", "I... I've never lost a patient before. Not today, I mean.")
+	if(L.stat == DEAD)
+		var/death_message = pick("I was one of those bots, who just wanted to fix...")
 		say(death_message)
 		target = null
 		return
 
-	var/t = confirmTarget(H)
+	var/t = confirmTarget(L)
 	if(!t)
-		var/message = pick("All patched up!", "An apple a day keeps me away.", "Feel better soon!")
+		var/message = pick("All patched up!", "More fuel - more living robots", "You're welcome!")
 		say(message)
 		target = null
 		return
 
 	icon_state = "medibots"
-	visible_message("<span class='warning'>[src] is trying to repair [H]!</span>")
+	visible_message("<span class='warning'>[src] is trying to repair [L]!</span>")
 	busy = 1
 	update_icons()
-	if(do_mob(src, H, 30))
+	if(do_mob(src, L, 30))
 		if(t == 1)
-			reagent_glass.reagents.trans_to_mob(H, injection_amount, CHEM_BLOOD)
+			reagent_glass.reagents.trans_to_mob(L, injection_amount, CHEM_BLOOD)
 		else
-			H.reagents.add_reagent(t, injection_amount)
-		visible_message("<span class='warning'>[src] injects [H] with the syringe!</span>")
+			L.reagents.add_reagent(t, injection_amount)
+		visible_message("<span class='warning'>[src] injects [L] with the syringe!</span>")
 	busy = 0
 	update_icons()
 
@@ -84,15 +84,15 @@
 /mob/living/bot/fixbot/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/weapon/welder_tank))
 		if(locked)
-			to_chat(user, "<span class='notice'>You cannot insert a beaker because the panel is locked.</span>")
+			to_chat(user, "<span class='notice'>You cannot insert a fuel tank because the panel is locked.</span>")
 			return
-		if(!isnull(fuel))
-			to_chat(user, "<span class='notice'>There is already a beaker loaded.</span>")
+		if(!isnull(tank))
+			to_chat(user, "<span class='notice'>There is already a fuel tank loaded.</span>")
 			return
 
 		user.drop_item()
 		O.loc = src
-		fuel = O
+		tank = O
 		to_chat(user, "<span class='notice'>You insert [O].</span>")
 		return
 	else
@@ -111,13 +111,6 @@
 		. += "None loaded"
 
 /mob/living/bot/fixbot/GetInteractPanel()
-	. = "Repairing threshold: "
-	. += "<a href='?src=\ref[src];command=adj_threshold;amount=-10'>--</a> "
-	. += "<a href='?src=\ref[src];command=adj_threshold;amount=-5'>-</a> "
-	. += "[heal_threshold] "
-	. += "<a href='?src=\ref[src];command=adj_threshold;amount=5'>+</a> "
-	. += "<a href='?src=\ref[src];command=adj_threshold;amount=10'>++</a>"
-
 	. += "<br>The speaker switch is [vocal ? "on" : "off"]. <a href='?src=\ref[src];command=togglevoice'>Toggle</a>"
 
 /mob/living/bot/fixbot/GetInteractMaintenance()
@@ -134,15 +127,11 @@
 	..()
 	if(CanAccessPanel(user))
 		switch(command)
-			if("adj_threshold")
-				if(!locked || issilicon(user))
-					var/adjust_num = text2num(href_list["amount"])
-					heal_threshold = Clamp(heal_threshold + adjust_num, 5, 75)
 			if("eject")
-				if(fuel)
+				if(tank)
 					if(!locked)
-						fuel.dropInto(src.loc)
-						fuel = null
+						tank.dropInto(src.loc)
+						tank = null
 					else
 						to_chat(user, "<span class='notice'>You cannot eject the fuel tank because the panel is locked.</span>")
 			if("togglevoice")
@@ -181,9 +170,9 @@
 	if (prob(50))
 		new /obj/item/robot_parts/l_arm(Tsec)
 
-	if(fuel)
-		fuel.loc = Tsec
-		fuel = null
+	if(tank)
+		tank.loc = Tsec
+		tank = null
 
 	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 	s.set_up(3, 1, src)
@@ -195,7 +184,7 @@
 	if(!..())
 		return 0
 
-	if(H.stat == DEAD) // He's dead, Jim
+	if(L.stat == DEAD) // He's dead, Jim
 		return 0
 
 	if(issilicon(L))
@@ -205,60 +194,52 @@
 		return 3
 
 	// If they're injured, we're using a beaker, and they don't have on of the chems in the beaker
-	if(reagent_glass && use_beaker && ((H.getBruteLoss() >= heal_threshold) || (H.getToxLoss() >= heal_threshold) || (H.getToxLoss() >= heal_threshold) || (H.getOxyLoss() >= (heal_threshold + 15))))
+	if(reagent_glass && use_beaker && ((L.getBruteLoss() >= heal_threshold) || (L.getToxLoss() >= heal_threshold) || (L.getToxLoss() >= heal_threshold) || (L.getOxyLoss() >= (heal_threshold + 15))))
 		for(var/datum/reagent/R in reagent_glass.reagents.reagent_list)
-			if(!H.reagents.has_reagent(R))
+			if(!L.reagents.has_reagent(R))
 				return 1
 			continue
 
-	if((H.getBruteLoss() >= heal_threshold) && (!H.reagents.has_reagent(treatment_brute)))
+	if((L.getBruteLoss() >= heal_threshold) && (!L.reagents.has_reagent(treatment_brute)))
 		return treatment_brute //If they're already medicated don't bother!
 
-	if((H.getFireLoss() >= heal_threshold) && (!H.reagents.has_reagent(treatment_fire)))
+	if((L.getFireLoss() >= heal_threshold) && (!L.reagents.has_reagent(treatment_fire)))
 		return treatment_fire
+
+
+
+
+
+
+
+
+
 
 /* Construction */
 
-/obj/item/weapon/storage/firstaid/attackby(obj/item/robot_parts/S, mob/user as mob)
+/obj/item/weapon/welder_tank/attackby(obj/item/robot_parts/S, mob/user as mob)
 	if ((!istype(S, /obj/item/robot_parts/l_arm)) && (!istype(S, /obj/item/robot_parts/r_arm)))
 		..()
 		return
 
-	if(contents.len >= 1)
-		to_chat(user, "<span class='notice'>You need to empty [src] out first.</span>")
-		return
-
-	var/obj/item/weapon/firstaid_arm_assembly/A = new /obj/item/weapon/firstaid_arm_assembly
-	if(istype(src, /obj/item/weapon/storage/firstaid/fire))
-		A.skin = "ointment"
-	else if(istype(src, /obj/item/weapon/storage/firstaid/toxin))
-		A.skin = "tox"
-	else if(istype(src, /obj/item/weapon/storage/firstaid/o2))
-		A.skin = "o2"
+	var/obj/item/weapon/fixbot_arm_assembly/A = new /obj/item/weapon/firstaid_arm_assembly
 
 	qdel(S)
 	user.put_in_hands(A)
-	to_chat(user, "<span class='notice'>You add the robot arm to the first aid kit.</span>")
+	to_chat(user, "<span class='notice'>You add the robot arm to the fuel tank.</span>")
 	user.drop_from_inventory(src)
 	qdel(src)
 
-/obj/item/weapon/firstaid_arm_assembly
-	name = "first aid/robot arm assembly"
-	desc = "A first aid kit with a robot arm permanently grafted to it."
+/obj/item/weapon/fixbot_arm_assembly
+	name = "fuel tank/robot arm assembly"
+	desc = "A fuel tank with a robot arm permanently grafted to it."
 	icon = 'icons/obj/aibots.dmi'
 	icon_state = "firstaid_arm"
 	var/build_step = 0
 	var/created_name = "Fixbot" //To preserve the name if it's a unique fixbot I guess
-	var/skin = null //Same as fixbot, set to tox or ointment for the respective kits.
 	w_class = ITEM_SIZE_NORMAL
 
-/obj/item/weapon/firstaid_arm_assembly/New()
-	..()
-	spawn(5) // Terrible. TODO: fix
-		if(skin)
-			overlays += image('icons/obj/aibots.dmi', "kit_skin_[src.skin]")
-
-/obj/item/weapon/firstaid_arm_assembly/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/item/weapon/fixbot_arm_assembly/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/weapon/pen))
 		var/t = sanitizeSafe(input(user, "Enter new robot name", name, created_name), MAX_NAME_LEN)
@@ -270,22 +251,28 @@
 	else
 		switch(build_step)
 			if(0)
-				if(istype(W, /obj/item/device/healthanalyzer))
+				if(istype(W, /obj/item/device/robotanalyzer))
 					user.drop_item()
 					qdel(W)
 					build_step++
-					to_chat(user, "<span class='notice'>You add the health sensor to [src].</span>")
-					SetName("First aid/robot arm/health analyzer assembly")
+					to_chat(user, "<span class='notice'>You add the robot analyzer to [src].</span>")
+					SetName("Fuel tank/robot arm/robot analyzer assembly")
 					overlays += image('icons/obj/aibots.dmi', "na_scanner")
-
 			if(1)
+				if(iswelder(W))
+					user.drop_item()
+					qdel(W)
+					build_step++
+					to_chat(user, "<span class='notice'>You add the welding tool to [src].</span>")
+					SetName("Fuel tank/robot arm/robot analyzer/welding tool assembly")
+					overlays += image('icons/obj/aibots.dmi', "na_scanner")
+			if(2)
 				if(isprox(W))
 					user.drop_item()
 					qdel(W)
 					to_chat(user, "<span class='notice'>You complete the Fixbot! Beep boop.</span>")
 					var/turf/T = get_turf(src)
 					var/mob/living/bot/fixbot/S = new /mob/living/bot/fixbot(T)
-					S.skin = skin
 					S.SetName(created_name)
 					S.update_icons() // apply the skin
 					user.drop_from_inventory(src)
