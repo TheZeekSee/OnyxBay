@@ -167,11 +167,11 @@ datum/preferences
 			open_load_dialog(usr)
 			return 1
 	else if(href_list["changeslot"])
-		save_character()
-		if(!load_character(text2num(href_list["changeslot"])))
+		load_character(text2num(href_list["changeslot"]))
+		sanitize_preferences()
+		if(!species)
 			species = SPECIES_HUMAN
 			randomize_appearance_and_body_for()
-			real_name = random_name(gender, species)
 			save_character()
 		close_load_dialog(usr)
 	else if(href_list["resetslot"])
