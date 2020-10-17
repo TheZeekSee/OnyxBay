@@ -1,6 +1,6 @@
-# OnyxBay [![Discord Shield](https://discordapp.com/api/guilds/414832443384659968/widget.png?style=shield)](https://discord.gg/4JFNdbk)
+# Last Hope [![Discord Shield](https://discordapp.com/api/guilds/414832443384659968/widget.png?style=shield)](https://discord.gg/4JFNdbk)
 
-[Наш сайт](https://ss13.ru/) - [Вики](https://wiki.ss13.ru/)
+[Сайт Onyx](https://ss13.ru/) - [Вики Onyx](https://wiki.ss13.ru/)
 
 ---
 
