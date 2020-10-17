@@ -1,4 +1,4 @@
-# Last Hope [![Discord Shield](https://discordapp.com/api/guilds/414832443384659968/widget.png?style=shield)](https://discord.gg/4JFNdbk)
+# Last Hope [![Discord Shield](https://discordapp.com/api/guilds/414832443384659968/widget.png?style=shield)](https://discord.gg/SsghmD6)
 
 [Сайт Onyx](https://ss13.ru/) - [Вики Onyx](https://wiki.ss13.ru/)
 
@@ -11,8 +11,6 @@
 
 ## Списки задач
 
-* [Задачи с денежными наградами](https://github.com/ChaoticOnyx/OnyxBay/issues?q=is%3Aopen+is%3Aissue+label%3A%F0%9F%92%B0%D0%BD%D0%B0%D0%B3%D1%80%D0%B0%D0%B4%D0%B0)
-* [Простые задачи для новичков](https://github.com/ChaoticOnyx/OnyxBay/issues?q=is%3Aopen+is%3Aissue+label%3A%22%3Agodmode%3A+%D0%BF%D1%80%D0%BE%D1%81%D1%82%D0%BE%22)
 * [Задачи с самым высоким приоритетом](https://github.com/ChaoticOnyx/OnyxBay/issues?q=is%3Aopen+is%3Aissue+label%3A%F0%9F%94%A5%D0%BF%D1%80%D0%B8%D0%BE%D1%80%D0%B8%D1%82%D0%B5%D1%82)
 * [Задачи с высоким приоритетом](https://github.com/ChaoticOnyx/OnyxBay/issues?q=is%3Aopen+is%3Aissue+label%3A%F0%9F%94%BA%D0%BF%D1%80%D0%B8%D0%BE%D1%80%D0%B8%D1%82%D0%B5%D1%82+)
 * [Задачи для спрайтеров](https://github.com/ChaoticOnyx/OnyxBay/issues?q=is%3Aopen+is%3Aissue+label%3A%22%F0%9F%8E%A8+%D1%81%D0%BF%D1%80%D0%B0%D0%B9%D1%82%D1%8B%22+)
