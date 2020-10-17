@@ -1,4 +1,4 @@
-# Last Hope [![Discord Shield](https://discordapp.com/api/guilds/414832443384659968/widget.png?style=shield)](https://discord.gg/SsghmD6)
+# Last Hope [![Discord Shield](https://discordapp.com/api/guilds/740991151015723118/widget.png?style=shield)](https://discord.gg/SsghmD6)
 
 [Сайт Onyx](https://ss13.ru/) - [Вики Onyx](https://wiki.ss13.ru/)
 
