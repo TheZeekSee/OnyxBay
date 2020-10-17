@@ -167,6 +167,7 @@ datum/preferences
 			open_load_dialog(usr)
 			return 1
 	else if(href_list["changeslot"])
+		save_character()
 		if(!load_character(text2num(href_list["changeslot"])))
 			species = SPECIES_HUMAN
 			randomize_appearance_and_body_for()
