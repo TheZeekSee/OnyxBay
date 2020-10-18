@@ -71,6 +71,14 @@
 
 /obj/structure/bed/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(istype(mover) && mover.pass_flags & PASS_FLAG_TABLE)
+		mover.layer = BELOW_TABLE_LAYER
+		return 1
+	else
+		return ..()
+
+/obj/structure/bed/CheckExit(atom/movable/O as mob|obj)
+	if(istype(O) && O.pass_flags & PASS_FLAG_TABLE)
+		O.layer = 4.0
 		return 1
 	else
 		return ..()
