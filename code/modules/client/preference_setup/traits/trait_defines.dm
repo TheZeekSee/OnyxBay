@@ -146,7 +146,6 @@
 	desc = "Small spaces and tight quarters makes you feel distressed.  Unfortunately both are rather common when living in space."
 	modifier_type = /datum/modifier/trait/phobia/claustrophobe
 
-/*
 
 /datum/trait/modifier/physical/cloned
 	name = "Cloned"
@@ -248,7 +247,7 @@
 	name = "Promethean-phobic"
 	desc = "Boilerplate racism for jellos goes here."
 	mutually_exclusive = list(/datum/trait/modifier/mental/xenophobe)
-*/
+
 
 /datum/trait/modifier/physical/stammering
 	name = "Stutterer"
