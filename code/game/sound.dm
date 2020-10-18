@@ -36,6 +36,11 @@
 #define ASTEROID CAVE
 #define SPACE UNDERWATER
 
+GLOBAL_LIST_INIT(human_clearing_throat, list(
+	FEMALE = "sound/voice/clearing-throat-f.ogg",
+	MALE = "sound/voice/clearing-throat-m.ogg"
+))
+
 GLOBAL_LIST_INIT(far_shot_sound,list('sound/effects/weapons/gun/far_fire1.ogg','sound/effects/weapons/gun/far_fire2.ogg','sound/effects/weapons/gun/far_fire3.ogg'))
 
 GLOBAL_LIST_INIT(f_cheavyb_sound,list('sound/effects/emotes/f_cheavyb1.ogg'))

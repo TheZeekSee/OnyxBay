@@ -13,9 +13,9 @@
 			message = copytext(message,2+length(speaking.key))
 		else
 			speaking = get_default_language()
-			
+
 	if(has_chem_effect(CE_VOICELOSS, 1))
-		whispering = TRUE		
+		whispering = TRUE
 
 	message = sanitize(message)
 	var/obj/item/organ/internal/voicebox/vox = locate() in internal_organs
@@ -211,6 +211,8 @@
 					used_radios += r_ear
 
 /mob/living/carbon/human/handle_speech_sound()
+	if(species.name == SPECIES_HUMAN) // infinity. needed for gender check
+		species.speech_sounds = GLOB.human_clearing_throat[gender]
 	if(species.speech_sounds && prob(species.speech_chance))
 		var/list/returns[2]
 		returns[1] = sound(pick(species.speech_sounds))
