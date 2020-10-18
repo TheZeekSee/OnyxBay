@@ -132,4 +132,10 @@
 							return playsound(user.loc, pick(emote_sound[FEMALE]), 50, 0)
 					if(emote_sound[H.gender])
 						return playsound(user.loc, pick(emote_sound[H.gender]), 50, 0)
-		return playsound(user.loc, pick(emote_sound), 50, 0)
+				else
+					return playsound(user.loc, emote_sound, 50, 0)
+			return
+		if(islist(emote_sound))
+			return playsound(user.loc, pick(emote_sound), 50, 0)
+		else
+			return playsound(user.loc, emote_sound, 50, 0)
