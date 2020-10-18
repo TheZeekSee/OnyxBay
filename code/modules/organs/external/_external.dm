@@ -151,17 +151,21 @@
 	s_base = new_dna.s_base
 
 /obj/item/organ/external/emp_act(severity)
+
+	if(!BP_IS_ROBOTIC(src))
+		return
+
 	var/burn_damage = 0
 	switch (severity)
 		if (1)
-			burn_damage = 15
+			burn_damage = 30
 		if (2)
-			burn_damage = 7
+			burn_damage = 15
 		if (3)
-			burn_damage = 3
+			burn_damage = 7.5
 
-	var/mult = BP_IS_ROBOTIC(src) + BP_IS_ASSISTED(src)
-	burn_damage *= mult/burn_mod //ignore burn mod for EMP damage
+//	var/mult = BP_IS_ROBOTIC(src) + BP_IS_ASSISTED(src)
+//	burn_damage *= mult/burn_mod //ignore burn mod for EMP damage
 
 	var/power = 4 - severity //stupid reverse severity
 	for(var/obj/item/I in implants)

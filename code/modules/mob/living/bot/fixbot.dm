@@ -226,7 +226,7 @@
 		for(var/obj/item/organ/external/O in H.organs)
 			if(!O)
 				continue
-			if(O.get_brute_damage() >= heal_threshold && O.get_brute_damage() <= ROBOLIMB_SELF_REPAIR_CAP && (istype(H.species,SPECIES_IPC) || BP_IS_ROBOTIC(O)))
+			if(O.get_brute_damage() >= heal_threshold && O.get_brute_damage() <= ROBOLIMB_SELF_REPAIR_CAP && (H.species.name == SPECIES_IPC || BP_IS_ROBOTIC(O)))
 				return O
 
 
