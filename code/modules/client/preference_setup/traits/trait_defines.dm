@@ -171,14 +171,12 @@
 /datum/trait/modifier/physical/no_borg
 	name = "Cybernetic Incompatability"
 	modifier_type = /datum/modifier/no_borg
-*/
 
 /datum/trait/modifier/physical/no_borg/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
 	if(setup.is_FBP())
 		return "Full Body Prosthetics are already partly or fully mechanical."
 	return ..()
 
-/*
 /datum/trait/modifier/mental/arachnophobe
 	name = "Arachnophobic"
 	desc = "Spiders are quite creepy to most people, however for you, those chitters of pure evil inspire pure dread and fear."

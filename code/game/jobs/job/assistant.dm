@@ -18,3 +18,28 @@
 		return list(access_maint_tunnels)
 	else
 		return list()
+
+/datum/job/prisoner
+	title = "Prisoner"
+	department = "Civilian"
+	department_flag = CIV
+
+	total_positions = 2
+	spawn_positions = 2
+	supervisors = "absolutely everyone"
+	selection_color = "#FF7F50"
+	economic_modifier = 0
+	access = list()
+	minimal_access = list()
+	outfit_type = /decl/hierarchy/outfit/job/prisoner
+
+/datum/job/prisoner/equip(mob/living/carbon/human/H)
+	. = ..()
+	if(.)
+		var/obj/item/weapon/implant/tracking/L = new /obj/item/weapon/implant/tracking(H)
+		L.imp_in = H
+		L.implanted = 1
+		var/obj/item/organ/external/affected = H.organs_by_name[BP_HEAD]
+		affected.implants += L
+		L.part = affected
+		L.implanted(src)
