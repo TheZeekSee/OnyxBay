@@ -18,6 +18,8 @@
 	var/targetted_emote                // Whether or not this emote needs a target.
 	var/check_restraints               // Can this emote be used while restrained?
 	var/conscious = 1				   // Do we need to be awake to emote this?
+	var/emote_sound
+	var/sounded_species = list()
 
 /decl/emote/proc/get_emote_message_1p(atom/user, atom/target, extra_params)
 	if(target)
@@ -29,21 +31,9 @@
 		return emote_message_3p_target
 	return emote_message_3p
 
+/*
 /decl/emote/proc/play_emote_sound(mob/user, key, datum/gender/user_gender)
-	if (user.type != /mob/living/carbon/human)
-		return
 
-	if (world.time > user.lastemote + 5 SECONDS)
-		user.lastemote = world.time
-	else
-		return
-
-	var/gender_prefix = ""
-
-	if (istype(user_gender, /datum/gender/male))
-		gender_prefix = "male"
-	else
-		gender_prefix = "female"
 
 	switch (key)
 		if ("cough")
@@ -52,6 +42,7 @@
 			playsound(user, "[gender_prefix]_pain", rand(25, 40), FALSE)
 		if ("gasp","choke")
 			playsound(user, "[gender_prefix]_breath", rand(25, 40), FALSE)
+*/
 
 /decl/emote/proc/do_emote(atom/user, extra_params)
 
@@ -100,13 +91,14 @@
 		use_3p = capitalize(use_3p)
 
 	if(message_type == AUDIBLE_MESSAGE)
-		play_emote_sound(user, key, user_gender)
+		//play_emote_sound(user, key, user_gender)
 
 		user.audible_message(message = use_3p, self_message = use_1p, deaf_message = emote_message_impaired, checkghosts = /datum/client_preference/ghost_sight)
 	else
 		user.visible_message(message = use_3p, self_message = use_1p, blind_message = emote_message_impaired, checkghosts = /datum/client_preference/ghost_sight)
 
 	do_extra(user, target)
+	if(emote_sound) do_sound(user, key, user_gender)
 
 /decl/emote/proc/do_extra(atom/user, atom/target)
 	return
@@ -119,3 +111,25 @@
 
 /decl/emote/dd_SortValue()
 	return key
+
+/decl/emote/proc/do_sound(mob/user, key, datum/gender/user_gender)
+	var/mob/living/carbon/human/H = user
+
+	if (world.time > user.lastemote + 5 SECONDS)
+		user.lastemote = world.time
+	else
+		return
+
+	if(H.stat) return // No dead or unconcious people screaming pls.
+	if(istype(H))
+		if(sounded_species)
+			if(H.species.name in sounded_species)
+				if(islist(emote_sound))
+					if(H.species.name == SPECIES_SKRELL)
+						if(H.h_style == "Skrell Male Tentacles")
+							return playsound(user.loc, pick(emote_sound[MALE]), 50, 0)
+						else
+							return playsound(user.loc, pick(emote_sound[FEMALE]), 50, 0)
+					if(emote_sound[H.gender])
+						return playsound(user.loc, pick(emote_sound[H.gender]), 50, 0)
+		return playsound(user.loc, pick(emote_sound), 50, 0)

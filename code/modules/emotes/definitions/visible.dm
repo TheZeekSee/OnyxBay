@@ -86,6 +86,7 @@
 	key = "salute"
 	emote_message_3p_target = "USER salutes to TARGET."
 	emote_message_3p = "USER salutes."
+	emote_sound = 'sound/effects/salute.ogg'
 
 /decl/emote/visible/flap
 	key = "flap"

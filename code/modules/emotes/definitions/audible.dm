@@ -2,11 +2,12 @@
 	key = "burp"
 	emote_message_3p = "USER burps."
 	message_type = AUDIBLE_MESSAGE
-	var/emote_sound
 
+/*
 /decl/emote/audible/do_extra(atom/user)
 	if(emote_sound)
 		playsound(user.loc, emote_sound, 50, 0)
+*/
 
 /decl/emote/audible/deathgasp_alien
 	key = "deathgasp"
@@ -20,6 +21,18 @@
 	key ="gasp"
 	emote_message_3p = "USER gasps."
 	conscious = 0
+	emote_sound = list(
+		MALE = list(
+			'sound/voice/gasp_male1.ogg', 'sound/voice/gasp_male2.ogg',
+			'sound/voice/gasp_male3.ogg', 'sound/voice/gasp_male4.ogg',
+			'sound/voice/gasp_male5.ogg', 'sound/voice/gasp_male6.ogg',
+			'sound/voice/gasp_male7.ogg'),
+		FEMALE = list(
+			'sound/voice/gasp_female1.ogg', 'sound/voice/gasp_female2.ogg',
+			'sound/voice/gasp_female3.ogg', 'sound/voice/gasp_female4.ogg',
+			'sound/voice/gasp_female5.ogg', 'sound/voice/gasp_female6.ogg',
+			'sound/voice/gasp_female7.ogg'))
+	sounded_species = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_VOX, SPECIES_SKRELL)
 
 /decl/emote/audible/scretch
 	key ="scretch"
@@ -58,6 +71,8 @@
 	key = "whistle"
 	emote_message_1p = "You whistle."
 	emote_message_3p = "USER whistles."
+	emote_sound = 'sound/voice/whistle.ogg'
+	sounded_species = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_VOX, SPECIES_IPC, SPECIES_SKRELL)
 
 /decl/emote/audible/boop
 	key = "boop"
@@ -67,6 +82,10 @@
 /decl/emote/audible/sneeze
 	key = "sneeze"
 	emote_message_3p = "USER sneezes."
+	emote_sound = list(
+		MALE = list('sound/voice/sneeze_male_1.ogg', 'sound/voice/sneeze_male_2.ogg'),
+		FEMALE = list('sound/voice/sneeze_female_1.ogg', 'sound/voice/sneeze_female_2.ogg'))
+	sounded_species = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_SKRELL)
 
 /decl/emote/audible/sniff
 	key = "sniff"
@@ -76,6 +95,12 @@
 	key = "snore"
 	emote_message_3p = "USER snores."
 	conscious = 0
+	emote_sound = list(
+		'sound/voice/snore_1.ogg', 'sound/voice/snore_2.ogg',
+		'sound/voice/snore_3.ogg', 'sound/voice/snore_4.ogg',
+		'sound/voice/snore_5.ogg', 'sound/voice/snore_6.ogg',
+		'sound/voice/snore_7.ogg')
+	sounded_species = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_VOX, SPECIES_SKRELL)
 
 /decl/emote/audible/whimper
 	key = "whimper"
@@ -84,10 +109,16 @@
 /decl/emote/audible/yawn
 	key = "yawn"
 	emote_message_3p = "USER yawns."
+	emote_sound = list(
+		MALE = list('sound/voice/yawn_male_1.ogg', 'sound/voice/yawn_male_2.ogg'),
+		FEMALE = list('sound/voice/yawn_female_1.ogg', 'sound/voice/yawn_female_2.ogg',
+						'sound/voice/yawn_female_3.ogg'))
+	sounded_species = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_SKRELL)
 
 /decl/emote/audible/clap
 	key = "clap"
 	emote_message_3p = "USER claps."
+	emote_sound = 'sound/voice/clap.ogg'
 
 /decl/emote/audible/chuckle
 	key = "chuckle"
@@ -97,18 +128,35 @@
 	key = "cough"
 	emote_message_3p = "USER coughs!"
 	conscious = 0
+	emote_sound = list(
+		MALE = 'sound/voice/cough_male.ogg',
+		FEMALE = 'sound/voice/cough_female.ogg')
+	sounded_species = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_VOX, SPECIES_SKRELL)
 
 /decl/emote/audible/cry
 	key = "cry"
 	emote_message_3p = "USER cries."
+	emote_sound = list(
+		MALE = list('sound/voice/cry_male_1.ogg', 'sound/voice/cry_male_2.ogg'),
+		FEMALE = list('sound/voice/cry_female_1.ogg', 'sound/voice/cry_female_2.ogg',
+						'sound/voice/cry_female_3.ogg'))
+	sounded_species = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_SKRELL)
 
 /decl/emote/audible/sigh
 	key = "sigh"
 	emote_message_3p = "USER sighs."
+	emote_sound = list(
+		MALE = 'sound/voice/sigh_male.ogg',
+		FEMALE = 'sound/voice/sigh_female.ogg')
+	sounded_species = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_VOX, SPECIES_SKRELL)
 
 /decl/emote/audible/laugh
 	key = "laugh"
 	emote_message_3p = "USER laughs."
+	emote_sound = list(
+		MALE = 'sound/voice/laugh_male_1.ogg',
+		FEMALE = 'sound/voice/laugh_female_2.ogg')
+	sounded_species = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_SKRELL)
 
 /decl/emote/audible/mumble
 	key = "mumble"
@@ -131,10 +179,19 @@
 /decl/emote/audible/giggle
 	key = "giggle"
 	emote_message_3p = "USER giggles."
+	emote_sound = list(
+		MALE = 'sound/voice/giggle_male_2.ogg',
+		FEMALE = 'sound/voice/giggle_female_3.ogg')
+	sounded_species = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_SKRELL)
 
 /decl/emote/audible/scream
 	key = "scream"
 	emote_message_3p = "USER screams!"
+	emote_sound = list(
+		MALE = list('sound/voice/scream_male_1.ogg', 'sound/voice/scream_male_2.ogg',
+					'sound/voice/scream_male_3.ogg'),
+		FEMALE = list('sound/voice/scream_female_1.ogg', 'sound/voice/scream_female_2.ogg'))
+	sounded_species = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_SKRELL)
 
 /decl/emote/audible/grunt
 	key = "grunt"

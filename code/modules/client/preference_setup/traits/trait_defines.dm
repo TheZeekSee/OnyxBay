@@ -146,7 +146,7 @@
 	desc = "Small spaces and tight quarters makes you feel distressed.  Unfortunately both are rather common when living in space."
 	modifier_type = /datum/modifier/trait/phobia/claustrophobe
 
-
+/*
 /datum/trait/modifier/physical/cloned
 	name = "Cloned"
 	desc = "At some point in your life, you died and were cloned."
@@ -171,12 +171,14 @@
 /datum/trait/modifier/physical/no_borg
 	name = "Cybernetic Incompatability"
 	modifier_type = /datum/modifier/no_borg
+*/
 
 /datum/trait/modifier/physical/no_borg/test_for_invalidity(datum/category_item/player_setup_item/traits/setup)
 	if(setup.is_FBP())
 		return "Full Body Prosthetics are already partly or fully mechanical."
 	return ..()
 
+/*
 /datum/trait/modifier/mental/arachnophobe
 	name = "Arachnophobic"
 	desc = "Spiders are quite creepy to most people, however for you, those chitters of pure evil inspire pure dread and fear."
@@ -191,6 +193,7 @@
 	name = "Trypanophobia"
 	desc = "Syringes and needles make you very distressed. You really don't want to get sick..."
 	modifier_type = /datum/modifier/trait/phobia/trypanophobe
+*/
 
 // Uncomment this when/if these get finished.
 /datum/trait/modifier/mental/synthphobe
