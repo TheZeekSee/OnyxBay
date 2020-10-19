@@ -1,6 +1,6 @@
 /decl/emote/visible
 	key ="tail"
-	emote_message_3p = "USER waves USER_THEIR tail."
+	emote_message_3p = "USER машет USER_THEIR хвостом."
 	message_type = VISIBLE_MESSAGE
 
 /decl/emote/visible/scratch
@@ -19,11 +19,11 @@
 
 /decl/emote/visible/sway
 	key ="sway"
-	emote_message_3p = "USER sways around dizzily."
+	emote_message_3p = "USER качается от головокружения."
 
 /decl/emote/visible/sulk
 	key ="sulk"
-	emote_message_3p = "USER sulks down sadly."
+	emote_message_3p = "USER печально дуется."
 
 /decl/emote/visible/dance
 	key ="dance"
@@ -71,7 +71,7 @@
 /decl/emote/visible/airguitar
 	key = "airguitar"
 	check_restraints = TRUE
-	emote_message_3p = "USER is strumming the air and headbanging like a safari chimp."
+	emote_message_3p = "USER бренчит в воздухе и трясет головой, как шимпанзе сафари."
 
 /decl/emote/visible/blink_r
 	key = "blink_r"
@@ -84,19 +84,19 @@
 
 /decl/emote/visible/salute
 	key = "salute"
-	emote_message_3p_target = "USER salutes to TARGET."
-	emote_message_3p = "USER salutes."
+	emote_message_3p_target = "USER делает воинское приветствие TARGET."
+	emote_message_3p = "USER делает воинское приветствие."
 	emote_sound = 'sound/effects/salute.ogg'
 
 /decl/emote/visible/flap
 	key = "flap"
 	check_restraints = TRUE
-	emote_message_3p = "USER flaps USER_THEIR wings."
+	emote_message_3p = "USER машет крыльями."
 
 /decl/emote/visible/aflap
 	key = "aflap"
 	check_restraints = TRUE
-	emote_message_3p = "USER flaps USER_THEIR wings ANGRILY!"
+	emote_message_3p = "USER агрессивно машет крыльями!"
 
 /decl/emote/visible/eyebrow
 	key = "eyebrow"
@@ -114,7 +114,7 @@
 
 /decl/emote/visible/faint
 	key = "faint"
-	emote_message_3p = "USER faints."
+	emote_message_3p = "USER падает в обморок."
 
 /decl/emote/visible/faint/do_extra(mob/user)
 	if(istype(user) && user.sleeping <= 0)
@@ -122,11 +122,11 @@
 
 /decl/emote/visible/frown
 	key = "frown"
-	emote_message_3p = "USER frowns."
+	emote_message_3p = "USER хмурится."
 
 /decl/emote/visible/blush
 	key = "blush"
-	emote_message_3p = "USER blushes."
+	emote_message_3p = "USER краснеет."
 
 /decl/emote/visible/wave
 	key = "wave"
@@ -135,8 +135,8 @@
 
 /decl/emote/visible/glare
 	key = "glare"
-	emote_message_3p = "USER glares at TARGET."
-	emote_message_3p = "USER glares."
+	emote_message_3p = "USER смотрит с ненавистью на TARGET."
+	emote_message_3p = "USER смотрит с ненавистью."
 
 /decl/emote/visible/stare
 	key = "stare"
@@ -161,11 +161,11 @@
 
 /decl/emote/visible/grin
 	key = "grin"
-	emote_message_3p = "USER grins."
+	emote_message_3p = "USER оскаливается в улыбке."
 
 /decl/emote/visible/shrug
 	key = "shrug"
-	emote_message_3p = "USER shrugs."
+	emote_message_3p = "USER пожимает плечами."
 
 /decl/emote/visible/smile
 	key = "smile"
@@ -192,8 +192,8 @@
 /decl/emote/visible/dap
 	key = "dap"
 	check_restraints = TRUE
-	emote_message_3p = "USER sadly can't find anybody to give daps to, and daps USER_THEMself."
-	emote_message_3p_target = "USER gives daps to TARGET."
+	emote_message_3p = "USER к сожалению не смог найти никого кому мог бы дать пять, поэтому дал пять самому себе."
+	emote_message_3p_target = "USER дал пять TARGET."
 
 /decl/emote/visible/signal
 	key = "signal"
@@ -205,15 +205,15 @@
 
 /decl/emote/visible/bounce
 	key = "bounce"
-	emote_message_3p = "USER bounces in place."
+	emote_message_3p = "USER подпрыгивает на месте."
 
 /decl/emote/visible/jiggle
 	key = "jiggle"
-	emote_message_3p = "USER jiggles!"
+	emote_message_3p = "USER покачивается!"
 
 /decl/emote/visible/lightup
 	key = "light"
-	emote_message_3p = "USER lights up for a bit, then stops."
+	emote_message_3p = "USER загорается ненадолго, затем останавливается."
 
 /decl/emote/visible/vibrate
 	key = "vibrate"
@@ -221,7 +221,7 @@
 
 /decl/emote/visible/deathgasp_robot
 	key = "deathgasp"
-	emote_message_3p = "USER shudders violently for a moment, then becomes motionless, USER_THEIR eyes slowly darkening."
+	emote_message_3p = "USER на мгновение сильно вздрагивает, затем становится неподвижным, его глаза медленно темнеют."
 
 /decl/emote/visible/handshake
 	key = "handshake"

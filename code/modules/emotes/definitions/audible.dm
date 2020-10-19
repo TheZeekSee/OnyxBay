@@ -1,6 +1,6 @@
 /decl/emote/audible
 	key = "burp"
-	emote_message_3p = "USER burps."
+	emote_message_3p = "USER рыгает."
 	message_type = AUDIBLE_MESSAGE
 
 /*
@@ -11,7 +11,7 @@
 
 /decl/emote/audible/deathgasp_alien
 	key = "deathgasp"
-	emote_message_3p = "USER lets out a waning guttural screech, green blood bubbling from its maw."
+	emote_message_3p = "USER издает убывающий гортанный визг, зеленая кровь пузырится из его пасти."
 
 /decl/emote/audible/gasp
 	key ="gasp"
