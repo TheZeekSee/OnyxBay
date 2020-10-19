@@ -457,6 +457,8 @@ BLIND     // can't see anything
 
 	if(H)
 		H.update_inv_head()
+		if(flags_inv & BLOCKHAIR)
+			H.update_hair()
 
 /obj/item/clothing/head/update_clothing_icon()
 	if (ismob(src.loc))
@@ -614,6 +616,10 @@ BLIND     // can't see anything
 	if (ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_shoes()
+		if(istype(M, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = M
+			if(flags_inv & BLOCKHAIR)
+				H.update_hair()
 
 ///////////////////////////////////////////////////////////////////////
 //Suit
