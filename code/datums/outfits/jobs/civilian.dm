@@ -4,7 +4,7 @@
 /decl/hierarchy/outfit/job/prisoner
 	name = OUTFIT_JOB_NAME("Prisoner")
 	uniform = /obj/item/clothing/under/color/orange
-	//id_type = /obj/item/weapon/card/id/civilian/prisoner
+	id_type = /obj/item/weapon/card/id/civilian/prisoner
 
 /decl/hierarchy/outfit/job/service
 	l_ear = /obj/item/device/radio/headset/headset_service

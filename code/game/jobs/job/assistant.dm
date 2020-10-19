@@ -32,6 +32,10 @@
 	access = list()
 	minimal_access = list()
 	outfit_type = /decl/hierarchy/outfit/job/prisoner
+	latejoin_at_spawnpoints = 1
+
+/datum/job/prisoner/get_access()
+	return
 
 /datum/job/prisoner/equip(mob/living/carbon/human/H)
 	. = ..()

@@ -433,6 +433,11 @@ var/const/NO_EMAG_ACT = -50
 /obj/item/weapon/card/id/civilian/bartender
 	job_access_type = /datum/job/bartender
 
+/obj/item/weapon/card/id/civilian/prisoner
+	desc = "A card issued specially for prisoners with unlimited prison time."
+	icon_state = "prisoner"
+	job_access_type = /datum/job/prisoner
+
 /obj/item/weapon/card/id/civilian/chef
 	job_access_type = /datum/job/chef
 
