@@ -88,6 +88,11 @@ var/const/EXTRA_COST_FACTOR = 1.25
 	path = /obj/item/glass_jar
 	category = "General"
 
+/datum/autolathe/recipe/mousetrap
+	name = "mousetrap"
+	path = /obj/item/device/assembly/mousetrap
+	category = "General"
+
 /datum/autolathe/recipe/crowbar
 	name = "crowbar"
 	path = /obj/item/weapon/crowbar
@@ -361,7 +366,7 @@ var/const/EXTRA_COST_FACTOR = 1.25
 	name = "igniter"
 	path = /obj/item/device/assembly/igniter
 	category = "Devices and Components"
-	
+
 /datum/autolathe/recipe/voice
 	name = "voice analyzer"
 	path = /obj/item/device/assembly/voice
