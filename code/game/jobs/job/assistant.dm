@@ -19,6 +19,18 @@
 	else
 		return list()
 
+/datum/job/assistant/equip(mob/living/carbon/human/H, alt_title)
+	. = ..()
+	if(.)
+		var/obj/item/weapon/card/id/id = H.GetIdCard()
+		switch(alt_title)
+			if("Technical Assistant")
+				id.access += access_engine
+			if("Medical Intern")
+				id.access += access_medical
+			if("Research Assistant")
+				id.access += access_research
+
 /datum/job/prisoner
 	title = "Prisoner"
 	department = "Civilian"
