@@ -19,7 +19,7 @@
 
 /decl/emote/audible/gasp
 	key ="gasp"
-	emote_message_3p = "USER gasps."
+	emote_message_3p = "USER задыхается."
 	conscious = 0
 	emote_sound = list(
 		MALE = list(
@@ -69,8 +69,8 @@
 
 /decl/emote/audible/whistle
 	key = "whistle"
-	emote_message_1p = "You whistle."
-	emote_message_3p = "USER whistles."
+	emote_message_1p = "Вы свистите."
+	emote_message_3p = "USER свистит."
 	emote_sound = 'sound/voice/whistle.ogg'
 	sounded_species = list(SPECIES_HUMAN, SPECIES_UNATHI, SPECIES_TAJARA, SPECIES_VOX, SPECIES_IPC, SPECIES_SKRELL)
 
@@ -81,7 +81,7 @@
 
 /decl/emote/audible/sneeze
 	key = "sneeze"
-	emote_message_3p = "USER sneezes."
+	emote_message_3p = "USER сморкается."
 	emote_sound = list(
 		MALE = list('sound/voice/sneeze_male_1.ogg', 'sound/voice/sneeze_male_2.ogg'),
 		FEMALE = list('sound/voice/sneeze_female_1.ogg', 'sound/voice/sneeze_female_2.ogg'))
@@ -93,7 +93,7 @@
 
 /decl/emote/audible/snore
 	key = "snore"
-	emote_message_3p = "USER snores."
+	emote_message_3p = "USER храпит."
 	conscious = 0
 	emote_sound = list(
 		'sound/voice/snore_1.ogg', 'sound/voice/snore_2.ogg',
@@ -108,7 +108,7 @@
 
 /decl/emote/audible/yawn
 	key = "yawn"
-	emote_message_3p = "USER yawns."
+	emote_message_3p = "USER зевает."
 	emote_sound = list(
 		MALE = list('sound/voice/yawn_male_1.ogg', 'sound/voice/yawn_male_2.ogg'),
 		FEMALE = list('sound/voice/yawn_female_1.ogg', 'sound/voice/yawn_female_2.ogg',
@@ -117,7 +117,7 @@
 
 /decl/emote/audible/clap
 	key = "clap"
-	emote_message_3p = "USER claps."
+	emote_message_3p = "USER хлопает."
 	emote_sound = 'sound/voice/clap.ogg'
 
 /decl/emote/audible/chuckle
@@ -126,7 +126,7 @@
 
 /decl/emote/audible/cough
 	key = "cough"
-	emote_message_3p = "USER coughs!"
+	emote_message_3p = "USER кашляет!"
 	conscious = 0
 	emote_sound = list(
 		MALE = 'sound/voice/cough_male.ogg',
@@ -135,7 +135,7 @@
 
 /decl/emote/audible/cry
 	key = "cry"
-	emote_message_3p = "USER cries."
+	emote_message_3p = "USER плачет."
 	emote_sound = list(
 		MALE = list('sound/voice/cry_male_1.ogg', 'sound/voice/cry_male_2.ogg'),
 		FEMALE = list('sound/voice/cry_female_1.ogg', 'sound/voice/cry_female_2.ogg',
@@ -144,7 +144,7 @@
 
 /decl/emote/audible/sigh
 	key = "sigh"
-	emote_message_3p = "USER sighs."
+	emote_message_3p = "USER вздыхает."
 	emote_sound = list(
 		MALE = 'sound/voice/sigh_male.ogg',
 		FEMALE = 'sound/voice/sigh_female.ogg')
@@ -152,7 +152,7 @@
 
 /decl/emote/audible/laugh
 	key = "laugh"
-	emote_message_3p = "USER laughs."
+	emote_message_3p = "USER смеётся."
 	emote_sound = list(
 		MALE = 'sound/voice/laugh_male_1.ogg',
 		FEMALE = 'sound/voice/laugh_female_2.ogg')
@@ -160,7 +160,7 @@
 
 /decl/emote/audible/mumble
 	key = "mumble"
-	emote_message_3p = "USER mumbles!"
+	emote_message_3p = "USER мямлет!"
 
 /decl/emote/audible/grumble
 	key = "grumble"
@@ -173,12 +173,12 @@
 
 /decl/emote/audible/moan
 	key = "moan"
-	emote_message_3p = "USER moans!"
+	emote_message_3p = "USER стонет!"
 	conscious = 0
 
 /decl/emote/audible/giggle
 	key = "giggle"
-	emote_message_3p = "USER giggles."
+	emote_message_3p = "USER giggle."
 	emote_sound = list(
 		MALE = 'sound/voice/giggle_male_2.ogg',
 		FEMALE = 'sound/voice/giggle_female_3.ogg')
@@ -186,7 +186,7 @@
 
 /decl/emote/audible/scream
 	key = "scream"
-	emote_message_3p = "USER screams!"
+	emote_message_3p = "USER кричит!"
 	emote_sound = list(
 		MALE = list('sound/voice/scream_male_1.ogg', 'sound/voice/scream_male_2.ogg',
 					'sound/voice/scream_male_3.ogg'),
@@ -199,7 +199,7 @@
 
 /decl/emote/audible/bug_hiss
 	key ="hiss"
-	emote_message_3p = "USER hisses."
+	emote_message_3p = "USER шипит."
 	emote_sound = 'sound/voice/BugHiss.ogg'
 
 /decl/emote/audible/bug_buzz
