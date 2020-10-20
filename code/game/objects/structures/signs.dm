@@ -21,13 +21,68 @@
 	return
 
 /obj/structure/sign/attackby(obj/item/W, mob/user)	//deconstruction
-	if(isScrewdriver(W) && !istype(src, /obj/structure/sign/double))
-		to_chat(user, "You unfasten the sign with your [W].")
-		var/obj/item/sign/S = new(src.loc)
-		S.SetName(name)
-		S.desc = desc
-		S.icon_state = icon_state
-		S.sign_state = icon_state
+	if(isWrench(W) && !istype(src, /obj/structure/sign/double))
+		user.visible_message("<span class='notice'>[user] starts removing [src]...</span>",
+							 "<span class='notice'>You start unfastening [src].</span>")
+		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
+		if(do_after(user, 40,src))
+			playsound(src, 'sound/items/deconstruct.ogg', 100)
+			user.visible_message("<span class='notice'>[user] unfastens [src].</span>",
+								 "<span class='notice'>You unfasten [src].</span>")
+			var/obj/item/sign/S = new(src.loc)
+			S.SetName(name)
+			S.desc = desc
+			S.icon_state = icon_state
+			S.sign_state = icon_state
+			qdel(src)
+	else if(istype(W, /obj/item/device/floor_painter) && !istype(src, /obj/structure/sign/double))
+		var/list/sign_types = list("Secure Area", "Biohazard", "High Voltage", "Radiation", "Hard Vacuum Ahead", "Disposal: Leads To Space", "Danger: Fire", "No Smoking", "Medbay", "Science", "Chemistry", \
+		"Hydroponics", "Xenobiology")
+		var/obj/structure/sign/sign_type
+		switch(input(user, "Select a sign type.", "Sign Customization") as null|anything in sign_types)
+			if("Warning")
+				sign_type = /obj/structure/sign/warning
+			if("Secure Area")
+				sign_type = /obj/structure/sign/warning/secure_area
+			if("Biohazard")
+				sign_type = /obj/structure/sign/warning/biohazard
+			if("High Voltage")
+				sign_type = /obj/structure/sign/warning/high_voltage
+			if("Radiation")
+				sign_type = /obj/structure/sign/warning/radioactive
+			if("Hard Vacuum Ahead")
+				sign_type = /obj/structure/sign/warning/vacuum
+			if("Disposal: Leads To Space")
+				sign_type = /obj/structure/sign/warning/deathsposal
+			if("Danger: Fire")
+				sign_type = /obj/structure/sign/warning/fire
+			if("No Smoking")
+				sign_type = /obj/structure/sign/warning/nosmoking_2
+			if("Medbay")
+				sign_type = /obj/structure/sign/redcross
+			if("Science")
+				sign_type = /obj/structure/sign/science_1
+			if("Chemistry")
+				sign_type = /obj/structure/sign/chemistry
+			if("Hydroponics")
+				sign_type = /obj/structure/sign/botany
+			if("Xenobiology")
+				sign_type = /obj/structure/sign/xenobio_1
+
+		//Make sure user is adjacent still
+		if(!Adjacent(user))
+			return
+
+		if(!sign_type)
+			return
+
+		//It's import to clone the pixel layout information
+		//Otherwise signs revert to being on the turf and
+		//move jarringly
+		playsound(src, 'sound/effects/spray2.ogg', 100)
+		var/obj/structure/sign/newsign = new sign_type(get_turf(src))
+		newsign.pixel_x = pixel_x
+		newsign.pixel_y = pixel_y
 		qdel(src)
 	else ..()
 
@@ -40,7 +95,7 @@
 	var/fastening = 0
 
 /obj/item/sign/attackby(obj/item/W, mob/user)	//construction
-	if(isScrewdriver(W) && isturf(user.loc))
+	if(isWrench(W) && isturf(user.loc))
 		if(fastening)
 			return
 		fastening = 1
@@ -73,6 +128,13 @@
 			qdel(src)
 		else
 			fastening = 0
+	else if(isWelder(W))
+		playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
+		if(do_after(user, 20, src))
+			new /obj/item/stack/material/plastic(user.loc, 2)
+			qdel(src)
+			return
+
 	else
 		..()
 

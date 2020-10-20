@@ -118,6 +118,7 @@
 	recipes += new /datum/stack_recipe("freezer floor tile", /obj/item/stack/tile/floor_freezer, 1, 4, 20)
 	recipes += new /datum/stack_recipe("hazard cone", /obj/item/weapon/caution/cone, 2, on_floor = 1)
 	recipes += new /datum/stack_recipe("small knife grip", /obj/item/weapon/material/shivgrip/plastic, 2, time = 20, one_per_turf = 0, on_floor = 1, supplied_material = "[name]")
+	recipes += new /datum/stack_recipe("sign", /obj/item/sign, 4, on_floor = 1)
 
 
 /material/wood/generate_recipes()
