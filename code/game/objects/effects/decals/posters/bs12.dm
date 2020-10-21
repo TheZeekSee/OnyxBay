@@ -298,3 +298,8 @@
 	icon_state="bsposter60"
 	name = "RblRware Ltd. logo"
 	desc = "This particular one is of a logo of one of the most famous arcade game studios that made Syndietoads & Zhirozavr."
+
+/datum/poster/mimic_61
+	icon_state="bsposter61"
+	name = "Mimic?"
+	desc = "This is not a mimic!"
