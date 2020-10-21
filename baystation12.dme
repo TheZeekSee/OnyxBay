@@ -549,6 +549,7 @@
 #include "code\game\gamemodes\nuclear\pinpointer.dm"
 #include "code\game\gamemodes\revolution\revolution.dm"
 #include "code\game\gamemodes\traitor\traitor.dm"
+#include "code\game\gamemodes\typhon\typhon.dm"
 #include "code\game\gamemodes\vampire\modular_vampire.dm"
 #include "code\game\gamemodes\vampire\vampire.dm"
 #include "code\game\gamemodes\vampire\vampire_datum.dm"
