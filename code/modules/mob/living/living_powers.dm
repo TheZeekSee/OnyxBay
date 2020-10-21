@@ -75,3 +75,58 @@
 		if(target.getBruteLoss() < -target.maxHealth)
 			target.gib()
 		src.adjustBruteLoss(-25)
+
+/mob/living/proc/morph()
+	set name = "Morph"
+	set desc = "Morph into an object near you."
+	set category = "Abilities"
+
+	if (last_special > world.time)
+		to_chat(src, "<span class='warning'>You aren't ready to do that! Wait [round(last_special - world.time) / 10] seconds.</span>")
+		return
+
+	if (incapacitated())
+		to_chat(src, "<span class='warning'>You can't do that while you're incapacitated!</span>")
+		return
+
+	last_special = world.time + 10 SECONDS
+
+	var/list/choices = list()
+	for(var/obj/item/I in view(1,src))
+		choices += M
+
+	var/obj/item/target = input(src, "To what do you want to morph?") as null|anything in choices
+
+	if(!target)
+		return
+
+	if(istype(src,/mob/living/simple_animal/typhon/mimic))
+		//add anim
+
+	if(do_mob(src, target, 5 SECONDS))
+		src.visible_message("<span class='notice'>[src] transforms into [target]!</span>")
+		var/obj/item/I = new(target)
+		I.loc = get_turf(src)
+		I.mimic = src
+		src.loc = I
+
+/obj/attackby(obj/item/O, mob/living/user)
+	if(mimic)
+		mimic.loc = get_turf(src)
+
+		mimic.visible_message("<span class='danger'>\The [src] has been attacked with \the [O] by [user]!</span>")
+		var/damage = O.force
+		if (O.damtype == PAIN)
+			damage = 0
+		if (O.damtype == STUN)
+			damage = (O.force / 8)
+		if(supernatural && istype(O,/obj/item/weapon/nullrod))
+			damage *= 2
+			purge = 3
+		damage *= 1.5
+		mimic.adjustBruteLoss(damage)
+
+		mimic = null
+		qdel(src)
+		return
+	return ..()

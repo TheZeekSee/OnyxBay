@@ -1,48 +1,22 @@
-GLOBAL_DATUM_INIT(borers, /datum/antagonist/xenos/borer, new)
+GLOBAL_DATUM_INIT(typhons, /datum/antagonist/xenos/typhon, new)
 
-/datum/antagonist/xenos/borer
-	id = MODE_BORER
+/datum/antagonist/xenos/typhon
+	id = MODE_TYPHON
 	role_text = "Typhon"
 	role_text_plural = "Typhons"
-	mob_path = /mob/living/simple_animal/borer
-	welcome_text = "Use your Infest power to crawl into the ear of a host and fuse with their brain. You can only take control temporarily, and at risk of hurting your host, so be clever and careful; your host is encouraged to help you however they can. Talk to your fellow borers with :x."
-	antag_indicator = "hudborer"
-	antaghud_indicator = "hudborer"
+	mob_path = /mob/living/simple_animal/typhon/mimic
+	welcome_text = "" //needs message
+	antag_indicator = "hudtyphon"
+	antaghud_indicator = "hudtyphon"
 
 	initial_spawn_req = 1
-	initial_spawn_target = 2
+	initial_spawn_target = 1
 
 	station_crew_involved = FALSE
 
-/datum/antagonist/xenos/borer/get_extra_panel_options(datum/mind/player)
-	return "<a href='?src=\ref[src];move_to_spawn=\ref[player.current]'>\[put in host\]</a>"
-
-/datum/antagonist/xenos/borer/create_objectives(datum/mind/player)
+/datum/antagonist/xenos/typhon/create_objectives(datum/mind/player)
 	if(!..())
 		return
-	player.objectives += new /datum/objective/borer_survive()
-	player.objectives += new /datum/objective/borer_reproduce()
-	player.objectives += new /datum/objective/escape()
-
-/datum/antagonist/xenos/borer/place_mob(mob/living/mob)
-	var/mob/living/simple_animal/borer/borer = mob
-	if(istype(borer))
-		var/mob/living/carbon/human/host
-		for(var/mob/living/carbon/human/H in SSmobs.mob_list)
-			if(H.stat != DEAD && !H.has_brain_worms())
-				var/obj/item/organ/external/head = H.get_organ(BP_HEAD)
-				if(head && !BP_IS_ROBOTIC(head))
-					host = H
-					break
-		if(istype(host))
-			var/obj/item/organ/external/head = host.get_organ(BP_HEAD)
-			if(head)
-				borer.host = host
-				head.implants += borer
-				borer.forceMove(head)
-				if(!borer.host_brain)
-					borer.host_brain = new(borer)
-				borer.host_brain.SetName(host.name)
-				borer.host_brain.real_name = host.real_name
-				return
-	..() // Place them at a vent if they can't get a host.
+	//player.objectives += new /datum/objective/borer_survive()
+	//player.objectives += new /datum/objective/borer_reproduce()
+	//player.objectives += new /datum/objective/escape()

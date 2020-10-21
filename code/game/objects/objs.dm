@@ -15,6 +15,7 @@
 	var/damtype = "brute"
 	var/armor_penetration = 0
 	var/anchor_fall = FALSE
+	var/mob/living/mimic
 
 /obj/Destroy()
 	var/obj/item/smallDelivery/delivery = loc
@@ -162,7 +163,7 @@
 	if(Adjacent(user))
 		add_fingerprint(user)
 	..()
-	
+
 // If object can not be used to start fire, return 0.
 /obj/proc/get_temperature_as_from_ignitor()
 	return 0

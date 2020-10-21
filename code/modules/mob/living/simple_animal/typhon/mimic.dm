@@ -7,8 +7,8 @@
 	return
 
 /mob/living/simple_animal/typhon/mimic
-	name = "cortical borer"
-	real_name = "cortical borer"
+	name = "typhon mimic"
+	real_name = "typhon mimic"
 	desc = "A small, quivering sluglike creature."
 	speak_emote = list("chirrups")
 	emote_hear = list("chirrups")
@@ -19,7 +19,7 @@
 	item_state = "voxslug" // For the lack of a better sprite...
 	icon_living = "brainslug"
 	icon_dead = "brainslug_dead"
-	speed = 5
+	speed = 0.4
 	a_intent = I_HURT
 	stop_automated_movement = 1
 	status_flags = CANPUSH
@@ -52,7 +52,7 @@
 	//verbs += /mob/living/proc/hide
 
 	generation = gen
-	truename = "[borer_names[min(generation, borer_names.len)]] [random_id("borer[generation]", 1000, 9999)]"
+	truename = "[borer_names[min(generation, borer_names.len)]] [random_id("typon mimic[generation]", 1000, 9999)]"
 	if(!roundstart) request_player()
 
 /mob/living/simple_animal/typhon/mimic/Stat()
@@ -65,4 +65,4 @@
 //Procs for grabbing players.
 /mob/living/simple_animal/typhon/mimic/proc/request_player()
 	var/datum/ghosttrap/G = get_ghost_trap("typhon mimic")
-	G.request_player(src, "A cortical borer needs a player.")
+	G.request_player(src, "A typhon mimic needs a player.")
