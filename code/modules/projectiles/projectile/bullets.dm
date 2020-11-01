@@ -12,6 +12,71 @@
 
 	muzzle_type = /obj/effect/projectile/bullet/muzzle
 
+
+//gipsgun bullet
+/obj/item/projectile/bullet/foam
+	name = "foam mass"
+	icon_state = "foammass"
+	damage = 0
+	damage_type = STUN
+	nodamage = 1
+	check_armour = "bullet"
+	embed = 1
+	sharp = 0
+	penetration_modifier = 0
+	var/mob_passthrough_check = 0
+
+/obj/item/projectile/bullet/foam/on_hit(atom/target, blocked = 0)
+	if (..(target, blocked))
+		var/mob/living/L = target
+		shake_camera(L, 3, 2)
+
+/obj/item/projectile/bullet/foam/attack_mob(mob/living/target_mob, distance, miss_modifier)
+	if(penetrating > 0 && damage > 20 && prob(damage))
+		mob_passthrough_check = 1
+	else
+		mob_passthrough_check = 0
+	. = ..()
+
+	if(. == 1 && iscarbon(target_mob))
+		damage *= 0.1
+
+/obj/item/projectile/bullet/foam/can_embed()
+	if(mob_passthrough_check)
+		return 0
+	return ..()
+
+/obj/item/projectile/bullet/foam/check_penetrate(atom/A)
+	if(!A || !A.density) return 1 //if whatever it was got destroyed when we hit it, then I guess we can just keep going
+
+	if(istype(A, /obj/mecha))
+		return 1 //mecha have their own penetration handling
+
+	if(ismob(A))
+		if(!mob_passthrough_check)
+			return 0
+		return 1
+
+	var/chance = damage
+	if(istype(A, /turf/simulated/wall))
+		var/turf/simulated/wall/W = A
+		chance = round(damage/W.material.integrity*180)
+	else if(istype(A, /obj/machinery/door))
+		var/obj/machinery/door/D = A
+		chance = round(damage/D.maxhealth*180)
+		if(D.glass) chance *= 2
+	else if(istype(A, /obj/structure/girder))
+		chance = 100
+
+	if(prob(chance))
+		if(A.opacity)
+			//display a message so that people on the other side aren't so confused
+			A.visible_message("<span class='warning'>\The [src] pierces through \the [A]!</span>")
+		return 1
+
+	return 0
+//end
+
 /obj/item/projectile/bullet/on_hit(atom/target, blocked = 0)
 	if (..(target, blocked))
 		var/mob/living/L = target
