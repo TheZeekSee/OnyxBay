@@ -24,7 +24,6 @@
 	embed = 1
 	sharp = 0
 	penetration_modifier = 0
-	var/mob_passthrough_check = 0
 
 /obj/item/projectile/bullet/foam/on_hit(atom/target, blocked = 0)
 	if (..(target, blocked))
