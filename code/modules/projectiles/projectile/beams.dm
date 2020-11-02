@@ -15,6 +15,13 @@
 	tracer_type = /obj/effect/projectile/laser/tracer
 	impact_type = /obj/effect/projectile/laser/impact
 
+/obj/item/projectile/beam/foam
+	name = "foam mass"
+	icon_state = "foammass"
+	fire_sound = 'sound/effects/weapons/energy/fire21.ogg'
+	damage = 0
+	armor_penetration = 1
+
 /obj/item/projectile/beam/practice
 	name = "laser"
 	icon_state = "laser"
