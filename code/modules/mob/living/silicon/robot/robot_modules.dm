@@ -229,7 +229,8 @@ var/global/list/robot_modules = list(
 					"Advanced Droid" = "droid-medical",
 					"Needles" = "medicalrobot",
 					"Drone" = "drone-surgery",
-					"Doot" = "eyebot-medical"
+					"Doot" = "eyebot-medical",
+					"Operator" = "operator-med"
 					)
 
 /obj/item/weapon/robot_module/medical/surgeon/New()
@@ -293,7 +294,8 @@ var/global/list/robot_modules = list(
 					"Advanced Droid" = "droid-medical",
 					"Needles" = "medicalrobot",
 					"Drone" = "drone-surgery",
-					"Doot" = "eyebot-medical"
+					"Doot" = "eyebot-medical",
+					"Operator" = "operator-med"
 					)
 
 /obj/item/weapon/robot_module/medical/surgeon_adv/New()
@@ -363,7 +365,8 @@ var/global/list/robot_modules = list(
 					"Standard" = "surgeon",
 					"Advanced Droid" = "droid-medical",
 					"Drone" = "drone-medical",
-					"Doot" = "eyebot-medical"
+					"Doot" = "eyebot-medical",
+					"Operator" = "operator-med"
 					)
 
 /obj/item/weapon/robot_module/medical/crisis/New()
@@ -429,7 +432,8 @@ var/global/list/robot_modules = list(
 					"Standard" = "surgeon",
 					"Advanced Droid" = "droid-medical",
 					"Drone" = "drone-medical",
-					"Doot" = "eyebot-medical"
+					"Doot" = "eyebot-medical",
+					"Operator" = "operator-med"
 					)
 
 /obj/item/weapon/robot_module/medical/crisis_adv/New()
@@ -508,7 +512,8 @@ var/global/list/robot_modules = list(
 					"Landmate" = "landmate",
 					"Landmate - Treaded" = "engiborg+tread",
 					"Drone" = "drone-engineer",
-					"Doot" = "eyebot-engineering"
+					"Doot" = "eyebot-engineering",
+					"Operator" = "operator-engineer"
 					)
 	no_slip = 1
 
@@ -708,7 +713,8 @@ var/global/list/robot_modules = list(
 					"Bloodhound - Treaded" = "secborg+tread",
 					"Drone" = "drone-sec",
 					"Doot" = "eyebot-security",
-					"Tridroid" = "orb-security"
+					"Tridroid" = "orb-security",
+					"Operator" = "operator-sec"
 				)
 
 /obj/item/weapon/robot_module/security/general/New()
@@ -887,7 +893,8 @@ var/global/list/robot_modules = list(
 					"Advanced Droid" = "droid-miner",
 					"Treadhead" = "Miner",
 					"Drone" = "drone-miner",
-					"Doot" = "eyebot-miner"
+					"Doot" = "eyebot-miner",
+					"Operator" = "operator-science"
 				)
 
 /obj/item/weapon/robot_module/miner/New()
@@ -936,7 +943,8 @@ var/global/list/robot_modules = list(
 					"Default" = "robot-science",
 					"Droid" = "droid-science",
 					"Drone" = "drone-science",
-					"Doot" = "eyebot-science"
+					"Doot" = "eyebot-science",
+					"Operator" = "operator-science"
 					)
 
 /obj/item/weapon/robot_module/research/general/New()
