@@ -225,13 +225,13 @@
 		/mob/living/carbon/human/proc/leap,
 		/mob/living/carbon/human/proc/psychic_whisper,
 		/mob/living/carbon/human/proc/regurgitate,
-		/mob/living/carbon/human/proc/toggle_darksight
+		/mob/living/carbon/human/proc/toggle_darksight,
 		/mob/living/carbon/human/proc/corrosive_acid,
 		/mob/living/carbon/human/proc/neurotoxin,
 		/mob/living/carbon/human/proc/acidspit,
 		/mob/living/carbon/human/proc/resin,
 		/mob/living/carbon/human/proc/Spit,
-		/mob/living/carbon/human/proc/psychic_whisper,
+		/mob/living/carbon/human/proc/psychic_whisper
 		)
 
 /datum/species/xenos/sentinel
