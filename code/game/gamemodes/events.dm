@@ -22,7 +22,7 @@
 			sleep(1200)
 
 */
-var/eventchance = 10 // Percent chance per 5 minutes.
+var/eventchance = 50 // Percent chance per 5 minutes.
 var/hadevent    = 0
 
 /proc/appendicitis()

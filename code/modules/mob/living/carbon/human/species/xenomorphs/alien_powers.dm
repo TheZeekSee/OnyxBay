@@ -147,7 +147,7 @@
 		..()
 
 /mob/living/carbon/human/proc/corrosive_acid(O as obj|turf in oview(1)) //If they right click to corrode, an error will flash if its an invalid target./N
-	set name = "Corrosive Acid (200)"
+	set name = "Corrosive Acid (100)"
 	set desc = "Drench an object in acid, destroying it over time."
 	set category = "Abilities"
 
@@ -173,7 +173,7 @@
 		to_chat(src, "<span class='alium'>You cannot dissolve this object.</span>")
 		return
 
-	if(check_alien_ability(200, 0, BP_ACID))
+	if(check_alien_ability(100, 0, BP_ACID))
 		new /obj/effect/acid(get_turf(O), O)
 		visible_message("<span class='alium'><B>[src] vomits globs of vile stuff all over [O]. It begins to sizzle and melt under the bubbling mess of acid!</B></span>")
 
@@ -222,7 +222,7 @@
 		to_chat(src, "<span class='alium'>You prepare to spit acid.</span>")
 
 /mob/living/carbon/human/proc/resin() // -- TLE
-	set name = "Secrete Resin (75)"
+	set name = "Secrete Resin (25)"
 	set desc = "Secrete tough malleable resin."
 	set category = "Abilities"
 
@@ -230,7 +230,7 @@
 	if(!choice)
 		return
 
-	if(!check_alien_ability(75, 1, BP_RESIN))
+	if(!check_alien_ability(25, 1, BP_RESIN))
 		return
 
 	visible_message("<span class='warning'><B>[src] vomits up a thick purple substance and begins to shape it!</B></span>", "<span class='alium'>You shape a [choice].</span>")
