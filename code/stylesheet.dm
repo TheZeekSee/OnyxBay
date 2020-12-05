@@ -36,6 +36,7 @@ em						{font-style: normal;font-weight: bold;}
 .ooc .pt_wizard			{color: #ed0776;}
 .ooc .pt_cultist		{color: #ea4f07;}
 .ooc .pt_assistant		{color: #74767a;}
+.ooc .shiza				{color: #99OOCC;}
 
 /* Admin: Private Messages */
 .pm  .howto				{color: #ff0000;	font-weight: bold;		font-size: 200%;}
