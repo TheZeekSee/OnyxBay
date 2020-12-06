@@ -77,7 +77,6 @@
 #define slot_legs        21
 #define slot_tie         22
 #define slot_last        22
-#define slot_wrist		 23
 
 // Inventory slot strings.
 // since numbers cannot be used as associative list keys.
@@ -102,7 +101,6 @@
 #define slot_glasses_str  	"slot_glasses"
 #define slot_s_store_str	"slot_s_store"
 #define slot_tie_str		"slot_tie"
-#define slot_wrist_str 		"slot_wrist"
 
 // Bitflags for clothing parts.
 #define HEAD        0x1
@@ -233,7 +231,6 @@ var/list/default_onmob_icons = list(
 		slot_gloves_str = 'icons/mob/onmob/hands.dmi',
 		slot_s_store_str = 'icons/mob/onmob/belt_mirror.dmi',
 		slot_tie_str = 'icons/mob/onmob/ties.dmi',
-		slot_wrist = 'icons/mob/onmob/wrist.dmi'
 		)
 
 /proc/slot_to_description(slot)
@@ -256,5 +253,4 @@ var/list/default_onmob_icons = list(
 		if(slot_glasses) return "Glasses"
 		if(slot_s_store) return "Suit Store"
 		if(slot_tie) return "Accessory"
-		if(slot_wrist) return "Wrist Accessory"
 	throw EXCEPTION("Cannot provide description for unknown slot: [slot]!")
