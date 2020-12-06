@@ -61,6 +61,7 @@
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
 	var/obj/item/s_store = null
+	var/obj/item/wrist = null
 
 	var/used_skillpoints = 0
 	var/list/skills = list()
