@@ -140,6 +140,15 @@
 		using.alpha = ui_alpha
 		src.adding += using
 
+		using = new /obj/screen/inventory()
+		using.SetName("wrist")
+		using.icon = ui_style
+		using.icon_state = "wrist"
+		using.screen_loc = ui_wrist
+		using.color = ui_color
+		using.alpha = ui_alpha
+		src.adding += using
+
 	if(hud_data.has_resist)
 		using = new /obj/screen()
 		using.SetName("resist")
