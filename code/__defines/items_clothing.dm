@@ -76,7 +76,6 @@
 #define slot_r_ear       20
 #define slot_legs        21
 #define slot_tie         22
-#define slot_last        22
 #define slot_wrist		 23
 #define slot_last        24
 

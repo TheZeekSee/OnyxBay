@@ -36,7 +36,7 @@
 		"storage1" =     list("loc" = ui_storage1,  "name" = "Left Pocket",  "slot" = slot_l_store,   "state" = "pocket"),
 		"storage2" =     list("loc" = ui_storage2,  "name" = "Right Pocket", "slot" = slot_r_store,   "state" = "pocket"),
 		"belt" =         list("loc" = ui_belt,      "name" = "Belt",         "slot" = slot_belt,      "state" = "belt"),
-		"wrist" =		 list("loc" = ui_wrist, 	"name" = "Wrist",		 "slot" = slot_wrist,	  "state" = "wrist")
+		"wrist" =		 list("loc" = ui_wrist, 	"name" = "Wrist",		 "slot" = slot_wrist,	  "state" = "pipboi", "toggle" = 1)
 		)
 
 /datum/hud_data/New()
