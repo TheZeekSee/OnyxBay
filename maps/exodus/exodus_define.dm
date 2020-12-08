@@ -22,8 +22,8 @@
 	dock_name     = "NAS Eagle"
 	boss_name     = "Central Command"
 	boss_short    = "Centcomm"
-	company_name  = "Transtar"
-	company_short = "TS"
+	company_name  = "Nanotrasen"
+	company_short = "NT"
 	system_name   = "Hope"
 
 	shuttle_docked_message = "The scheduled Crew Transfer Shuttle to %Dock_name% has docked with the station. It will depart in approximately %ETD%"
