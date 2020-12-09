@@ -22,7 +22,7 @@
 	dock_name     = "NAS Eagle"
 	boss_name     = "Central Command"
 	boss_short    = "Centcomm"
-	company_name  = "Nanotrasen"
+	company_name  = "NanoTrasen"
 	company_short = "NT"
 	system_name   = "Hope"
 

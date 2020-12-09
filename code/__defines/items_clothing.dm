@@ -12,7 +12,7 @@
 #define SLOT_HEAD       0x40
 #define SLOT_FEET       0x80
 #define SLOT_ID         0x100
-#define SLOT_WRIST		0x200
+#define SLOT_WRIST		0x800
 #define SLOT_BELT       0x200
 #define SLOT_BACK       0x400
 #define SLOT_POCKET     0x800  // This is to allow items with a w_class of 3 or 4 to fit in pockets.
