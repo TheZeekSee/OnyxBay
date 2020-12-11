@@ -12,7 +12,6 @@
 #define SLOT_HEAD       0x40
 #define SLOT_FEET       0x80
 #define SLOT_ID         0x100
-#define SLOT_WRIST		0x800
 #define SLOT_BELT       0x200
 #define SLOT_BACK       0x400
 #define SLOT_POCKET     0x800  // This is to allow items with a w_class of 3 or 4 to fit in pockets.
@@ -77,7 +76,6 @@
 #define slot_r_ear       20
 #define slot_legs        21
 #define slot_tie         22
-#define slot_wrist		 23
 #define slot_last        24
 
 // Inventory slot strings.
@@ -103,7 +101,6 @@
 #define slot_glasses_str  	"slot_glasses"
 #define slot_s_store_str	"slot_s_store"
 #define slot_tie_str		"slot_tie"
-#define slot_wrist_str		"slot_wrist"
 
 // Bitflags for clothing parts.
 #define HEAD        0x1
@@ -234,7 +231,6 @@ var/list/default_onmob_icons = list(
 		slot_gloves_str = 'icons/mob/onmob/hands.dmi',
 		slot_s_store_str = 'icons/mob/onmob/belt_mirror.dmi',
 		slot_tie_str = 'icons/mob/onmob/ties.dmi',
-		slot_wrist_str = 'icons/mob/onmob/wrist.dmi',
 		)
 
 /proc/slot_to_description(slot)
@@ -257,5 +253,4 @@ var/list/default_onmob_icons = list(
 		if(slot_glasses) return "Glasses"
 		if(slot_s_store) return "Suit Store"
 		if(slot_tie) return "Accessory"
-		if(slot_wrist) return "Wrist Accessory"
 	throw EXCEPTION("Cannot provide description for unknown slot: [slot]!")
