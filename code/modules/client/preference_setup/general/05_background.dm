@@ -8,7 +8,7 @@
 	//Some faction information.
 	var/home_system = "Unset"           //System of birth.
 	var/citizenship = "None"            //Current home system.
-	var/faction = "NanoTrasen"          //General associated faction.
+	var/faction = "TranStar"          //General associated faction.
 	var/religion = "None"               //Religious association.
 
 /datum/category_item/player_setup_item/general/background
@@ -33,7 +33,7 @@
 			factionExist = TRUE
 			break
 	if (!factionExist)
-		pref.faction = "NanoTrasen"
+		pref.faction = "TranStar"
 
 /datum/category_item/player_setup_item/general/background/save_character(savefile/S)
 	to_file(S["med_record"],pref.med_record)
@@ -49,7 +49,7 @@
 /datum/category_item/player_setup_item/general/background/sanitize_character()
 	if(!pref.home_system) pref.home_system = "Unset"
 	if(!pref.citizenship) pref.citizenship = "None"
-	if(!pref.faction)     pref.faction =     "NanoTrasen"
+	if(!pref.faction)     pref.faction =     "TranStar"
 	if(!pref.religion)    pref.religion =    "None"
 
 	pref.nanotrasen_relation = sanitize_inlist(pref.nanotrasen_relation, COMPANY_ALIGNMENTS, initial(pref.nanotrasen_relation))

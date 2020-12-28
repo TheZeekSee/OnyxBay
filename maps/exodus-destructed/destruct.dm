@@ -15,8 +15,9 @@
 	#include "../shared/exodus_torch/_include.dm"
 
 
-	#include "destruct.dmm"
+	#include "destruct-2.dmm"
 	#include "../exodus/exodus-3.dmm"
+	#include "destruct-1.dmm"
 
 
 	#define USING_MAP_DATUM /datum/map/destruct
