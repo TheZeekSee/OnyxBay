@@ -15,11 +15,11 @@
 	#include "../shared/exodus_torch/_include.dm"
 
 
-	#include "destruct-2.dmm"
+	#include "talos-1.dmm"
 	#include "../exodus/exodus-3.dmm"
 
 
-	#define USING_MAP_DATUM /datum/map/destruct
+	#define USING_MAP_DATUM /datum/map/talos
 
 #elif !defined(MAP_OVERRIDE)
 
