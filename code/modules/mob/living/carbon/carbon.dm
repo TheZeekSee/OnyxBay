@@ -32,9 +32,9 @@
 
 	if(nutrition && stat != 2)
 		nutrition -= min(nutrition, DEFAULT_HUNGER_FACTOR/10)
-		if(m_intent == "run")
+		if(m_intent == M_RUN)
 			nutrition -= min(nutrition, DEFAULT_HUNGER_FACTOR/10)
-	if((MUTATION_FAT in mutations) && m_intent == "run" && bodytemperature <= 360)
+	if((MUTATION_FAT in mutations) && m_intent == M_RUN && bodytemperature <= 360)
 		bodytemperature += 2
 
 	// Moving around increases germ_level faster
@@ -47,24 +47,23 @@
 			user.last_special = world.time + 50
 			src.visible_message("<span class='danger'>You hear something rumbling inside [src]'s stomach...</span>")
 			var/obj/item/I = user.get_active_hand()
-			if(I && I.force)
-				var/d = rand(round(I.force / 4), I.force)
-				if(istype(src, /mob/living/carbon/human))
-					var/mob/living/carbon/human/H = src
-					var/obj/item/organ/external/organ = H.get_organ(BP_CHEST)
-					if (istype(organ))
-						organ.take_external_damage(d, 0)
-					H.updatehealth()
-				else
-					src.take_organ_damage(d)
-				user.visible_message("<span class='danger'>[user] attacks [src]'s stomach wall with the [I.name]!</span>")
-				playsound(user.loc, 'sound/effects/attackblob.ogg', 50, 1)
+			var/dmg = (I && I.force) ? rand(round(I.force / 4), I.force) : rand(1, 6) //give a chance to creatures without hands
+			if(istype(src, /mob/living/carbon/human))
+				var/mob/living/carbon/human/H = src
+				var/obj/item/organ/external/organ = H.get_organ(BP_GROIN)
+				if (istype(organ))
+					organ.take_external_damage(dmg, 0)
+				H.updatehealth()
+			else
+				take_organ_damage(dmg)
+			user.visible_message("<span class='danger'>[user] attacks [src]'s stomach wall!</span>")
+			playsound(user.loc, 'sound/effects/attackblob.ogg', 50, 1)
 
-				if(prob(src.getBruteLoss() - 50))
-					for(var/atom/movable/A in stomach_contents)
-						A.loc = loc
-						stomach_contents.Remove(A)
-					src.gib()
+			if(prob(getBruteLoss() - 50))
+				for(var/atom/movable/A in stomach_contents)
+					A.loc = loc
+					stomach_contents.Remove(A)
+				gib()
 
 /mob/living/carbon/gib()
 	for(var/mob/M in src)
@@ -388,16 +387,34 @@
 /mob/living/carbon/slip(slipped_on, stun_duration = 8)
 	var/area/A = get_area(src)
 	if(!A.has_gravity())
-		return
+		return 0
 	if(buckled)
+<<<<<<< HEAD
 		return
 	if(weakened)
 		return
+=======
+		return 0
+	if(weakened)
+		return 0
+>>>>>>> upstream/release/chaotic
 	stop_pulling()
 	to_chat(src, SPAN("warning", "You slipped on [slipped_on]!"))
 	playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
 	Weaken(Floor(stun_duration/3))
 	return 1
+
+/mob/living/carbon/slip_on_obj(obj/slipped_on, stun_duration = 8, slip_dist = 0)
+	if(!slipped_on)
+		return 0
+	if(slip("the [slipped_on.name]", stun_duration))
+		if(slip_dist && !slipped_on.anchored)
+			slipped_on.throw_at(get_edge_target_turf(slipped_on, turn(dir, 180)), slip_dist, 1)
+			for(var/i = 1 to slip_dist)
+				step(src, dir)
+			sleep(1)
+		return 1
+	return 0
 
 /mob/living/carbon/proc/add_chemical_effect(effect, magnitude = 1)
 	if(effect in chem_effects)

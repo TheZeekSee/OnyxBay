@@ -32,7 +32,7 @@
 		if(ishuman(loc))
 			var/mob/living/carbon/human/C = loc
 			if((src == C.wear_mask || manual) && C.check_has_mouth()) // if it's in the human/monkey mouth, transfer reagents to the mob
-				reagents.trans_to_mob(C, smokeamount*amount, CHEM_BLOOD, filter_trans)
+				reagents.trans_to_mob(C, smokeamount*amount, CHEM_INGEST, filter_trans)
 			else // else just remove some of the reagents
 				reagents.remove_any(smokeamount*amount)
 			smoke_loc = C.loc
@@ -93,8 +93,8 @@
 
 		var/explosion_amount = 0
 
-		if(reagents.get_reagent_amount(/datum/reagent/toxin/phoron))
-			explosion_amount += reagents.get_reagent_amount(/datum/reagent/toxin/phoron)
+		if(reagents.get_reagent_amount(/datum/reagent/toxin/plasma))
+			explosion_amount += reagents.get_reagent_amount(/datum/reagent/toxin/plasma)
 		if(reagents.get_reagent_amount(/datum/reagent/fuel))
 			explosion_amount += reagents.get_reagent_amount(/datum/reagent/fuel) / 2
 

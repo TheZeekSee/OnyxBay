@@ -4,10 +4,10 @@
 
 	..()
 
-	if (transforming)
-		return
+	if(HAS_TRANSFORMATION_MOVEMENT_HANDLER(src))
+		return 0
 	if(!loc)
-		return
+		return 0
 
 	if(machine && !CanMouseDrop(machine, src))
 		machine = null
