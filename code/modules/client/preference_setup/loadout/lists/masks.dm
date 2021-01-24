@@ -120,3 +120,12 @@
 /datum/gear/mask/spirit
 	display_name = "spirit mask"
 	path = /obj/item/clothing/mask/spirit
+<<<<<<< HEAD
+=======
+	price = 10
+
+/datum/gear/mask/balaclava
+	display_name = "balaclava"
+	path = /obj/item/clothing/mask/balaclava
+	price = 25
+>>>>>>> upstream/release/chaotic
