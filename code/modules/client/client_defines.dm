@@ -14,13 +14,9 @@
 	var/datum/click_handler/click_handler
 
 	var/datum/preferences/prefs = null
-<<<<<<< HEAD
 	var/move_delay = 1
 	var/moving = null
 	var/species_ingame_whitelisted = TRUE
-=======
-	var/species_ingame_whitelisted = FALSE
->>>>>>> upstream/release/chaotic
 
 	var/datum/donator_info/donator_info = new
 

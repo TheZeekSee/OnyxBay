@@ -63,10 +63,5 @@
 /obj/item/weapon/bananapeel/Crossed(mob/living/M)
 	if(!istype(M))
 		return
-<<<<<<< HEAD
 	if(!M.m_intent == "walk")
 		M.slip("the [src.name]", 3)
-=======
-	if(M.m_intent != M_WALK)
-		M.slip_on_obj(src, 3, 2)
->>>>>>> upstream/release/chaotic
