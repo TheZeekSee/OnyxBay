@@ -62,6 +62,11 @@
 	desc = "Multi-colored rope with different iridescent bulbs"
 	icon_state = "garland_left"
 
+/obj/structure/sign/christmas/garlandup
+	name = "garland"
+	desc = "Multi-colored rope with different iridescent bulbs"
+	icon_state = "garlandup"
+
 /obj/structure/sign/christmas/garlandright
 	name = "garland"
 	desc = "Multi-colored rope with different iridescent bulbs"

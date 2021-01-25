@@ -50,7 +50,7 @@
 	silicon_radio = /obj/item/device/radio/borg
 
 	var/mob/living/silicon/ai/connected_ai = null
-	var/obj/item/weapon/cell/cell = /obj/item/weapon/cell/high
+	var/obj/item/weapon/cell/cell = /obj/item/weapon/cell/hyper
 	var/obj/machinery/camera/camera = null
 
 	var/cell_emp_mult = 2

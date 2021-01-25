@@ -317,3 +317,31 @@
 		to_chat(user, "<span class='warning'>You need to open the cover to unload [src].</span>")
 		return
 	..()
+
+/obj/item/weapon/gun/projectile/automatic/m41a //Hopefully someone will find a way to make these fire in bursts or something. --Superxpdude
+	name = "M41A Pulse Riffle"
+	desc = "This is my rifle. There are many like it, but this one is mine"
+	icon_state = "m41a"	//ugly
+	fire_sound = 'sound/effects/weapons/gun/fire1.ogg'
+	item_state = "m41a"
+	w_class = ITEM_SIZE_LARGE
+	load_method = MAGAZINE
+	caliber = ".45"
+	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
+	slot_flags = SLOT_BELT|SLOT_BACK
+	ammo_type = /obj/item/ammo_casing/c45
+	magazine_type = /obj/item/ammo_magazine/c45uzi
+	allowed_magazines = /obj/item/ammo_magazine/c45uzi //more damage compared to the wt550, smaller mag size
+
+	firemodes = list(
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, one_hand_penalty=0, burst_accuracy=null, dispersion=null),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=4,    one_hand_penalty=1, burst_accuracy=list(0,-1,-1),       dispersion=list(0.0, 0.6, 1.0)),
+		list(mode_name="short bursts",   burst=5, fire_delay=null, move_delay=4,    one_hand_penalty=2, burst_accuracy=list(0,-1,-1,-1,-2), dispersion=list(0.6, 0.6, 1.0, 1.0, 1.2)),
+		)
+
+/obj/item/weapon/gun/projectile/automatic/mini_uzi/update_icon()
+	..()
+	if(ammo_magazine)
+		icon_state = "mpistolen"
+	else
+		icon_state = "mpistolen-empty"

@@ -17,14 +17,14 @@
 	accessible_z_levels = list("1" = 5, "2" = 5, "4" = 10, "5" = 15, "6" = 15, "7" = 30, "8" = 5, "9" = 5, "10" = 5, "11" = 5, "12" = 5)
 	dynamic_z_levels = list()
 
-	station_name  = "NSS Exodus"
-	station_short = "Exodus"
-	dock_name     = "NAS Crescent"
+	station_name  = "SCSS Talos-I"
+	station_short = "Talos-I"
+	dock_name     = "NAS Magnet"
 	boss_name     = "Central Command"
 	boss_short    = "Centcomm"
 	company_name  = "NanoTrasen"
 	company_short = "NT"
-	system_name   = "Nyx"
+	system_name   = "Milky Way"
 
 	shuttle_docked_message = "The scheduled Crew Transfer Shuttle to %Dock_name% has docked with the station. It will depart in approximately %ETD%"
 	shuttle_leaving_dock = "The Crew Transfer Shuttle has left the station. Estimate %ETA% until the shuttle docks at %dock_name%."

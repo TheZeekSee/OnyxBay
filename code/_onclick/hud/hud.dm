@@ -165,7 +165,6 @@
 					if(slot_r_store)
 						if(H.r_store) H.r_store.screen_loc = null
 
-
 /datum/hud/proc/instantiate()
 	if(!ismob(mymob)) return 0
 	if(!mymob.client) return 0

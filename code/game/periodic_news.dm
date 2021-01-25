@@ -5,8 +5,8 @@
 	var
 		round_time // time of the round at which this should be announced, in seconds
 		message // body of the message
-		author = "NanoTrasen Editor"
-		channel_name = "Nyx Daily"
+		author = "Transtar Company"
+		channel_name = "Transtar Secrets"
 		can_be_redacted = 0
 		message_type = "Story"
 
@@ -14,40 +14,33 @@
 
 		paycuts_suspicion
 			round_time = 60*10
-			message = {"Reports have leaked that NanoTrasen is planning to put paycuts into
-						effect on many of its Research Stations in Tau Ceti. Apparently these research
-						stations haven't been able to yield the expected revenue, and thus adjustments
-						have to be made."}
-			author = "Unauthorized"
-
-		paycuts_confirmation
-			round_time = 60*40
-			message = {"Earlier rumours about paycuts on Research Stations in the Tau Ceti system have
-						been confirmed. Shockingly, however, the cuts will only affect lower tier
-						personnel. Heads of Staff will, according to our sources, not be affected."}
-			author = "Unauthorized"
+			message = {"We need to increase the reload speed of the GYPSUM cannon. The starters on
+						this device work well, Oh-Oh-Oh-Oh-Oh-very slowly."}
+			author = "Mary"
 
 		human_experiments
+			round_time = 60*40
+			message = {"As you can see, we are close to completion. As soon as the cooling system is
+						optimized and connected to the K-beam firing node, the prototypes will be sent
+						to Earth. The tests are going according to plan. Preliminary results show promising
+						effects on molecular structures. The weapon has not yet been tested on live targets."}
+			author = "Lane Carpenter"
+
+		paycuts_confirmation
 			round_time = 60*90
-			message = {"Unbelievable reports about human experimentation have reached our ears. According
-			 			to a refugee from one of the Tau Ceti Research Stations, their station, in order
-			 			to increase revenue, has refactored several of their facilities to perform experiments
-			 			on live humans, including virology research, genetic manipulation, and \"feeding them
-			 			to the slimes to see what happens\". Allegedly, these test subjects were neither
-			 			humanified monkeys nor volunteers, but rather unqualified staff that were forced into
-			 			the experiments, and reported to have died in a \"work accident\" by NanoTrasen."}
-			author = "Unauthorized"
+			message = {"1.Don't forget that Blind Giants can call for help using the Ganges.
+						2. Don't let Flag dusterus use the white gem against necro.
+						3. +1 block bonus for everyone who solves the Drip puzzle"}
+			author = "Giant's citadel"
 
 	bluespace_research
 
 		announcement
 			round_time = 60*20
-			message = {"The new field of research trying to explain several interesting spacetime oddities,
-						also known as \"Bluespace Research\", has reached new heights. Of the several
-						hundred space stations now orbiting in Tau Ceti, fifteen are now specially equipped
-						to experiment with and research Bluespace effects. Rumours have it some of these
-						stations even sport functional \"travel gates\" that can instantly move a whole research
-						team to an alternate reality."}
+			message = {"Coral is a complex neural structural network that (according to Alex) stores the souls
+						of all its victims (a translation jamb, because the original refers to the psyche or mind).
+						Weavers weave them out of the air and the minds of their dead victims. It emits a neural
+						signal directed towards alpha Typhon for its arrival."}
 
 	random_junk
 
@@ -78,7 +71,7 @@
 	lotus_tree
 
 		explosions
-			channel_name = "Nyx Daily"
+			channel_name = "Transtar facts"
 			author = "Reporter Leland H. Howards"
 
 			message = {"The newly-christened civillian transport Lotus Tree suffered two very large explosions near the
@@ -92,19 +85,19 @@
 	food_riots
 
 		breaking_news
-			channel_name = "Nyx Daily"
-			author = "Reporter Ro'kii Ar-Raqis"
+			channel_name = "Transtar Facts"
+			author = "Reporter Ivan Satyukov"
 
 			message = {"Breaking news: Food riots have broken out throughout the Refuge asteroid colony in the Tenebrae
 						Lupus system. This comes only hours after NanoTrasen officials announced they will no longer trade with the
 						colony, citing the increased presence of \"hostile factions\" on the colony has made trade too dangerous to
-						continue. NanoTrasen officials have not given any details about said factions. More on that at the top of
+						continue. Transtar officials have not given any details about said factions. More on that at the top of
 						the hour."}
 			round_time = 60 * 10
 
 		more
-			channel_name = "Nyx Daily"
-			author = "Reporter Ro'kii Ar-Raqis"
+			channel_name = "Transtar Worlds"
+			author = "Reporter Colten Callision"
 
 			message = {"More on the Refuge food riots: The Refuge Council has condemned NanoTrasen's withdrawal from
 			the colony, claiming \"there has been no increase in anti-NanoTrasen activity\", and \"\[the only] reason

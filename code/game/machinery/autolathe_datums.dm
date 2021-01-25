@@ -449,6 +449,18 @@ var/const/EXTRA_COST_FACTOR = 1.25
 	path = /obj/item/weapon/pen/red
 	category = "General"
 
+/datum/autolathe/recipe/healthanalyzer
+	name = "Health Analyzer"
+	path = /obj/item/device/healthanalyzer
+	category = "Devices and Components"
+	resources = list(MATERIAL_STEEL = 1200 , MATERIAL_GLASS = 1200)
+
+/datum/autolathe/recipe/ledflash
+	name = "LED Flashlight"
+	path = /obj/item/device/flashlight/upgraded
+	category = "Devices and Components"
+	resources = list(MATERIAL_STEEL = 2200 , MATERIAL_GLASS = 2400)
+
 /datum/autolathe/recipe/clipboard
 	name = "clipboard"
 	path = /obj/item/weapon/clipboard

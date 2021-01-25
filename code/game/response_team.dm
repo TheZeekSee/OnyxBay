@@ -7,7 +7,7 @@ var/ert_base_chance = 10 // Default base chance. Will be incremented by incremen
 var/can_call_ert
 
 /client/proc/response_team()
-	set name = "Dispatch Emergency Response Team"
+	set name = "Argus Emergency Response Team"
 	set category = "Special Verbs"
 	set desc = "Send an emergency response team"
 
@@ -32,11 +32,11 @@ var/can_call_ert
 		to_chat(usr, "<span class='danger'>Looks like somebody beat you to it!</span>")
 		return
 
-	log_admin("[key_name(usr)] used Dispatch Response Team.", notify_admin = TRUE)
+	log_admin("[key_name(usr)] used Argus Emergency Response Team.", notify_admin = TRUE)
 	trigger_armed_response_team(1)
 
 /client/proc/response_team_menu()
-	set name = "Emergency Response Team Mission Menu"
+	set name = "Argus Emergency Response Team Mission Menu"
 	set category = "Special Verbs"
 	set desc = "Add/remove/redact ERT mission"
 
@@ -49,7 +49,7 @@ var/can_call_ert
 		to_chat(usr, SPAN_DANGER("The game hasn't started yet!"))
 		return
 
-	var/out = "<meta charset=\"utf-8\"><b>The Emergency Response Team Mission Menu</b>"
+	var/out = "<meta charset=\"utf-8\"><b>The Argus Emergency Response Team Mission Menu</b>"
 	out += "<hr>"
 	out += "<b>Objectives</b></br>"
 	if(GLOB.ert.global_objectives && GLOB.ert.global_objectives.len)
@@ -65,7 +65,7 @@ var/can_call_ert
 			num++
 		out += "<br><a href='?src=\ref[src];obj_announce=1;ert_action=1'>\[announce objectives\]</a>"
 	else
-		out += "Emergency Response Teams haven't received any tasks yet!"
+		out += "Argus Emergency Response Team haven't received any tasks yet!"
 	out += "<br><a href='?src=\ref[src];obj_add=1;ert_action=1'>\[add objective\]</a><br><br>"
 	out += "<hr>"
 	out += "<b>Maximum avaliable players in ERT squad:</b> [GLOB.ert.hard_cap] "
@@ -73,7 +73,7 @@ var/can_call_ert
 	usr << browse(out, "window=edit_mission[src]")
 
 /mob/proc/join_response_team()
-	set name = "Join Response Team"
+	set name = "Join Argus Emergency Response Team"
 	set category = "OOC"
 
 	if(GAME_STATE < RUNLEVEL_GAME)

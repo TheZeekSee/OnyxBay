@@ -34,7 +34,7 @@
 			factionExist = TRUE
 			break
 	if (!factionExist)
-		pref.faction = "NanoTrasen"
+		pref.faction = "TranStar"
 
 /datum/category_item/player_setup_item/general/background/save_character(savefile/S)
 	to_file(S["nanotrasen_relation"], pref.nanotrasen_relation)

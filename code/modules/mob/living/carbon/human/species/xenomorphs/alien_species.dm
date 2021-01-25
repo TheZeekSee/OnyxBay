@@ -204,7 +204,7 @@
 	weeds_plasma_rate = 5
 	caste_name = "hunter"
 	slowdown = -1
-	total_health = 150
+	total_health = 200
 	tail = "xenos_hunter_tail"
 
 	icobase = 'icons/mob/human_races/xenos/r_xenos_hunter.dmi'
@@ -225,7 +225,13 @@
 		/mob/living/carbon/human/proc/leap,
 		/mob/living/carbon/human/proc/psychic_whisper,
 		/mob/living/carbon/human/proc/regurgitate,
-		/mob/living/carbon/human/proc/toggle_darksight
+		/mob/living/carbon/human/proc/toggle_darksight,
+		/mob/living/carbon/human/proc/corrosive_acid,
+		/mob/living/carbon/human/proc/neurotoxin,
+		/mob/living/carbon/human/proc/acidspit,
+		/mob/living/carbon/human/proc/resin,
+		/mob/living/carbon/human/proc/Spit,
+		/mob/living/carbon/human/proc/psychic_whisper
 		)
 
 /datum/species/xenos/sentinel
