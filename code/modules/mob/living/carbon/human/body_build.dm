@@ -2,7 +2,6 @@ var/global/datum/body_build/default_body_build = new
 
 
 /datum/body_build
-<<<<<<< HEAD
 	var/name		= "Default"
 
 	var/genders		= list(MALE, FEMALE, NEUTER, PLURAL)
@@ -59,36 +58,6 @@ var/global/datum/body_build/default_body_build = new
 // 		return hand_groups[group]
 // 	else
 // 		return (hand == LEFT) ? l_hand : r_hand
-=======
-	var/name         = "Default"
-
-	var/genders      = list(MALE, FEMALE)
-	var/index        = ""
-	var/roboindex    = ""										// for slim and slim_alt BBs prothesis
-	var/misk_icon    = 'icons/mob/mob.dmi'
-	var/list/clothing_icons = list(
-		"slot_w_uniform" = 'icons/inv_slots/uniforms/mob.dmi',
-		"slot_suit"      = 'icons/inv_slots/suits/mob.dmi',
-		"slot_gloves"	 = 'icons/inv_slots/gloves/mob.dmi',
-		"slot_glasses"   = 'icons/inv_slots/glasses/mob.dmi',
-		"slot_l_ear"     = 'icons/inv_slots/ears/mob.dmi',
-		"slot_r_ear"     = 'icons/inv_slots/ears/mob_r.dmi',
-		"slot_wear_mask" = 'icons/inv_slots/masks/mob.dmi',
-		"slot_head"      = 'icons/inv_slots/hats/mob.dmi',
-		"slot_shoes"     = 'icons/inv_slots/shoes/mob.dmi',
-		"slot_belt"      = 'icons/inv_slots/belts/mob.dmi',
-		"slot_s_store"   = 'icons/inv_slots/belts/mirror/mob.dmi',
-		"slot_back"      = 'icons/inv_slots/back/mob.dmi',
-		"slot_tie"       = 'icons/inv_slots/acessories/mob.dmi',
-		"hidden"         = 'icons/inv_slots/hidden/mob.dmi',
-		"slot_wear_id"   = 'icons/mob/onmob/id.dmi',
-		"slot_l_hand"    = 'icons/mob/onmob/items/lefthand.dmi',
-		"slot_r_hand"    = 'icons/mob/onmob/items/righthand.dmi'
-		)
-
-	var/rig_back     = 'icons/inv_slots/rig/mob.dmi'
-	var/blood_icon   = 'icons/mob/human_races/masks/blood_human.dmi'
->>>>>>> upstream/release/chaotic
 
 /datum/body_build/proc/get_mob_icon(slot, icon_state)
 	var/icon/I

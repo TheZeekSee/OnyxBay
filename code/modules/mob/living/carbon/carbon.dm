@@ -389,15 +389,9 @@
 	if(!A.has_gravity())
 		return 0
 	if(buckled)
-<<<<<<< HEAD
 		return
 	if(weakened)
 		return
-=======
-		return 0
-	if(weakened)
-		return 0
->>>>>>> upstream/release/chaotic
 	stop_pulling()
 	to_chat(src, SPAN("warning", "You slipped on [slipped_on]!"))
 	playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
