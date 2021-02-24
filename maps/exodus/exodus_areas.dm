@@ -111,7 +111,7 @@
 	area_flags = AREA_FLAG_RAD_SHIELDED
 
 /area/shuttle/syndicate_elite
-	name = "\improper Merc Elite Shuttle"
+	name = "\improper Syndicate Elite Shuttle"
 	area_flags = AREA_FLAG_RAD_SHIELDED
 
 /area/shuttle/transport/centcom
@@ -221,7 +221,7 @@
 //SYNDICATES
 
 /area/syndicate_mothership
-	name = "\improper Mercenary Base"
+	name = "\improper Syndicate Base"
 	icon_state = "syndie-ship"
 	requires_power = 0
 	dynamic_lighting = 0
@@ -293,7 +293,7 @@
 	area_flags = AREA_FLAG_RAD_SHIELDED
 
 /area/syndicate_station/start
-	name = "\improper Mercenary Forward Operating Base"
+	name = "\improper Syndicate Forward Operating Base"
 	icon_state = "yellow"
 
 /area/syndicate_station/southwest
@@ -592,6 +592,10 @@
 
 /area/maintenance/underground/engineering
 	name = "\improper Underground Engineering Maintenance"
+	icon_state = "uengineering"
+
+/area/maintenance/underground/engineering_lower
+	name = "\improper Underground Engineering"
 	icon_state = "uengineering"
 
 /area/maintenance/underground/research
@@ -1170,6 +1174,10 @@
 /area/chapel/office
 	name = "\improper Chapel Office"
 	icon_state = "chapeloffice"
+
+/area/chapel/crematorium
+	name = "\improper Сrematorium"
+	icon_state = "chapelcrematorium"
 
 /area/lawoffice
 	name = "\improper Internal Affairs"
@@ -1882,6 +1890,9 @@ area/rnd/test_area
 	name = "\improper Holodeck - Space"
 	has_gravity = 0
 	sound_env = SPACE
+
+/area/holodeck/source_chess
+	name = "\improper Holodeck - Chess Field"
 
 /area/prison/solitary
 	name = "Solitary Confinement"

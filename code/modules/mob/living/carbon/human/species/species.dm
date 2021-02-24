@@ -107,7 +107,7 @@
 	var/reagent_tag                                   //Used for metabolizing reagents.
 	var/breath_pressure = 16                          // Minimum partial pressure safe for breathing, kPa
 	var/breath_type = "oxygen"                        // Non-oxygen gas breathed, if any.
-	var/poison_type = "phoron"                        // Poisonous air.
+	var/poison_type = "plasma"                        // Poisonous air.
 	var/exhale_type = "carbon_dioxide"                // Exhaled gas type.
 	var/cold_level_1 = 243                           // Cold damage level 1 below this point. -30 Celsium degrees
 	var/cold_level_2 = 200                            // Cold damage level 2 below this point.
@@ -318,6 +318,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		var/obj/item/organ/external/E = H.get_organ(organ.parent_organ)
 		E.internal_organs |= organ
 		H.internal_organs_by_name[organ.organ_tag] = organ
+		organ.after_organ_creation()
 
 	for(var/name in H.organs_by_name)
 		H.organs |= H.organs_by_name[name]
@@ -530,7 +531,10 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	if(H.disabilities & NEARSIGHTED)
 		prescriptions += 7
 	if(H.equipment_prescription)
-		prescriptions -= H.equipment_prescription
+		if(H.disabilities & NEARSIGHTED)
+			prescriptions -= H.equipment_prescription
+		else
+			prescriptions += H.equipment_prescription
 
 	var/light = light_sensitive
 	if(light)
