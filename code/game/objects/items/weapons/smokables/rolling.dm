@@ -85,20 +85,20 @@
 	throw_range = 1
 	throw_speed = 1
 
-/obj/item/weapon/reagent_containers/food/snacks/tobacco/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/food/snacks/tobacco/New()
+	..()
 	bitesize = 3
 
-/obj/item/weapon/reagent_containers/food/snacks/tobacco/generic/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/food/snacks/tobacco/generic/New()
+	..()
 	reagents.add_reagent(/datum/reagent/tobacco, 4)
 
 /obj/item/weapon/reagent_containers/food/snacks/tobacco/cherry
 	desc = "A small pile of dried and grinded herbs. Smells of cherries."
 	icon_state = "tpile_cherry"
 
-/obj/item/weapon/reagent_containers/food/snacks/tobacco/cherry/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/food/snacks/tobacco/cherry/New()
+	..()
 	reagents.add_reagent(/datum/reagent/tobacco, 3)
 	reagents.add_reagent(/datum/reagent/nutriment/cherryjelly, 2)
 
@@ -106,8 +106,8 @@
 	desc = "A small pile of dried and grinded herbs. Smells of mint."
 	icon_state = "tpile_menthol"
 
-/obj/item/weapon/reagent_containers/food/snacks/tobacco/menthol/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/food/snacks/tobacco/menthol/New()
+	..()
 	reagents.add_reagent(/datum/reagent/tobacco, 3)
 	reagents.add_reagent(/datum/reagent/menthol, 2)
 
@@ -115,8 +115,8 @@
 	desc = "A small pile of dried and grinded herbs. Smells of cocoa."
 	icon_state = "tpile_chocolate"
 
-/obj/item/weapon/reagent_containers/food/snacks/tobacco/chocolate/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/food/snacks/tobacco/chocolate/New()
+	..()
 	reagents.add_reagent(/datum/reagent/tobacco, 3)
 	reagents.add_reagent(/datum/reagent/nutriment/coco, 2)
 
@@ -124,16 +124,16 @@
 	desc = "A small pile of evenly dried and finely grounded herbs. Smells of quality."
 	icon_state = "tpile_premium"
 
-/obj/item/weapon/reagent_containers/food/snacks/tobacco/premium/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/food/snacks/tobacco/premium/New()
+	..()
 	reagents.add_reagent(/datum/reagent/tobacco/fine, 4)
 
 /obj/item/weapon/reagent_containers/food/snacks/tobacco/contraband
 	desc = "A suspicious pile of dried and grinded herbs. Smells of something barely legal."
 	icon_state = "tpile_contraband"
 
-/obj/item/weapon/reagent_containers/food/snacks/tobacco/contraband/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/food/snacks/tobacco/contraband/New()
+	..()
 	reagents.add_reagent(/datum/reagent/tobacco, 2)
 	reagents.add_reagent(/datum/reagent/thc, 4)
 

@@ -203,9 +203,8 @@
 	if(camera)
 		camera.status = 0
 
-	if(held_item)
-		held_item.loc = src.loc
-		held_item = null
+	held_item.loc = src.loc
+	held_item = null
 
 	gibs(loc, null, null, /obj/effect/gibspawner/robot) //TODO: use gib() or refactor spiderbots into synthetics.
 	qdel(src)

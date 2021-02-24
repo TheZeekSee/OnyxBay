@@ -16,7 +16,6 @@
 	opacity = 0
 	var/obj/item/weapon/airlock_electronics/electronics = null
 	explosion_resistance = 5
-	can_atmos_pass = ATMOS_PASS_PROC
 	air_properties_vary_with_direction = 1
 	var/timer = null
 
@@ -80,7 +79,7 @@
 /obj/machinery/door/window/Bumped(atom/movable/AM)
 	if(operating)
 		return FALSE
-
+	
 	if(isbot(AM))
 		var/mob/living/bot/bot = AM
 		if(check_access(bot.botcard))
@@ -107,19 +106,15 @@
 		else if(density)
 			flick(text("[]deny", base_state), src)
 
-/obj/machinery/door/window/CanPass(atom/movable/mover, turf/target)
+/obj/machinery/door/window/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(istype(mover) && mover.pass_flags & PASS_FLAG_GLASS)
-		return TRUE
+		return 1
 	if(get_dir(loc, target) == dir) //Make sure looking at appropriate border
+		if(air_group)
+			return 0
 		return !density
-	return TRUE
-
-/obj/machinery/door/window/CanZASPass(turf/T, is_zone)
-	if(get_dir(T, loc) == turn(dir, 180))
-		if(is_zone) // No merging allowed.
-			return FALSE
-		return !density // Air can flow if open (density == FALSE).
-	return TRUE // Windoors don't block if not facing the right way.
+	else
+		return 1
 
 /obj/machinery/door/window/CheckExit(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.pass_flags & PASS_FLAG_GLASS)

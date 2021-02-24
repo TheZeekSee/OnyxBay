@@ -15,14 +15,12 @@
 	var/icon_aggro = null // for swapping to when we get aggressive
 
 /mob/living/simple_animal/hostile/asteroid/Aggro()
-	. = ..()
-	if(.)
-		icon_state = icon_aggro
+	..()
+	icon_state = icon_aggro
 
 /mob/living/simple_animal/hostile/asteroid/LoseAggro()
-	. = ..()
-	if(.)
-		icon_state = icon_living
+	..()
+	icon_state = icon_living
 
 /mob/living/simple_animal/hostile/asteroid/bullet_act(obj/item/projectile/P)//Reduces damage from most projectiles to curb off-screen kills
 	if(!stat)

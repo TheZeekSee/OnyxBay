@@ -99,7 +99,7 @@
 	    /obj/item/weapon/cartridge/medical,
 	    /obj/item/device/flashlight,
 	    /obj/item/weapon/tank/emergency/oxygen/engi,
-	    /obj/item/clothing/glasses/hud/one_eyed/oneye/medical,
+	    /obj/item/clothing/glasses/hud/health,
 	    /obj/item/device/healthanalyzer,
 	    /obj/item/device/radio/off,
 	    /obj/random/medical,
@@ -128,7 +128,6 @@
 		/obj/item/clothing/under/rank/chief_medical_officer,
 		/obj/item/clothing/suit/storage/toggle/labcoat/cmo,
 		/obj/item/clothing/suit/storage/toggle/labcoat/cmoalt,
-		/obj/item/clothing/accessory/storage/white_vest,
 		/obj/item/weapon/cartridge/cmo,
 		/obj/item/clothing/gloves/latex,
 		/obj/item/clothing/shoes/brown,
@@ -230,7 +229,7 @@
 		/obj/item/clothing/suit/storage/toggle/labcoat/virologist,
 		/obj/item/clothing/mask/surgical,
 		/obj/item/device/healthanalyzer,
-		/obj/item/clothing/glasses/hud/one_eyed/oneye/medical
+		/obj/item/clothing/glasses/hud/health
 	)
 
 /obj/structure/closet/secure_closet/psychiatry

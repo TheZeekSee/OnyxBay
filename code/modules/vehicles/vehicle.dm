@@ -163,9 +163,6 @@
 	if(load == .)
 		unload(.)
 
-/obj/vehicle/hides_inside_walls()
-	return istype(load, /mob/living) ? 0 : 1
-
 //-------------------------------------------
 // Vehicle procs
 //-------------------------------------------

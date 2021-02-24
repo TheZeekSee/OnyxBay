@@ -213,22 +213,19 @@ var/list/gear_datums = list()
 		var/ticked = (G.display_name in pref.gear_list[pref.gear_slot])
 		var/allowed_to_see = gear_allowed_to_see(G)
 		var/display_class
-		var/discountText
 		if(G != selected_gear)
 			if(ticked)
 				display_class = "white"
 			else if(!gear_allowed_to_equip(G, user))
 				display_class = "gold"
-				discountText = G.price && G.discount ? "<b>(-[round(G.discount * 100)]%)</b>" : ""
 			else if(!allowed_to_see)
 				display_class = "red"
 			else
 				display_class = "gray"
 		else
 			display_class = "linkOn"
-
 		entry += "<tr>"
-		entry += "<td width=25%><a [display_class ? "class='[display_class]' " : ""]href='?src=\ref[src];select_gear=[html_encode(G.display_name)]'>[G.display_name] [discountText]</a></td>"
+		entry += "<td width=25%><a [display_class ? "class='[display_class]' " : ""]href='?src=\ref[src];select_gear=[html_encode(G.display_name)]'>[G.display_name]</a></td>"
 		entry += "</td></tr>"
 
 		if(!hide_unavailable_gear || allowed_to_see || ticked)
@@ -313,21 +310,6 @@ var/list/gear_datums = list()
 		if(desc)
 			. += "<br>"
 			. += desc
-			. += "<br>"
-
-		if(selected_gear.patron_tier)
-			. += "<br>"
-			. += "<b>Patreon tier: [patron_tier_decorated(selected_gear.patron_tier)]</b>"
-			. += "<br>"
-
-		if(selected_gear.price)
-			. += "<br>"
-			if(!gear_allowed_to_equip(selected_gear, user) && selected_gear.discount)
-				var/adjusted_price = selected_gear.price * selected_gear.discount
-				. += "<b>Price: <strike>[selected_gear.price] opyx[selected_gear.price != 1 ? "es" : ""]</strike></b> "
-				. += "<font color='#ff6600'><b>[adjusted_price] opyx[adjusted_price != 1 ? "es" : ""] ([round(selected_gear.discount * 100)] percents off!)</b></font>"
-			else
-				. += "<b>Price: [selected_gear.price] opyx[selected_gear.price != 1 ? "es" : ""]</b>"
 			. += "<br>"
 
 		// Tweaks
@@ -415,21 +397,6 @@ var/list/gear_datums = list()
 		if(trying_on)
 			pref.trying_on_tweaks["[tweak]"] = metadata
 		return TOPIC_REFRESH_UPDATE_PREVIEW
-	if(href_list["buy_gear"])
-		var/datum/gear/G = locate(href_list["buy_gear"])
-		ASSERT(G.price)
-		ASSERT(!user.client.donator_info.has_item(G.type))
-		var/comment = "Donation store purchase: [G.type]"
-		var/adjusted_price = G.discount ? G.price * G.discount : G.price
-		var/transaction = SSdonations.create_transaction(user.client, -adjusted_price, DONATIONS_TRANSACTION_TYPE_PURCHASE, comment)
-		if(transaction)
-			if(SSdonations.give_item(user.client, G.type, transaction))
-				pref.trying_on_gear = null
-				pref.trying_on_tweaks.Cut()
-				return TOPIC_REFRESH_UPDATE_PREVIEW
-			else
-				SSdonations.remove_transaction(user.client, transaction)
-		return TOPIC_NOACTION
 	if(href_list["try_on"])
 		if(!istype(selected_gear))
 			return TOPIC_NOACTION
@@ -563,9 +530,6 @@ var/list/gear_datums = list()
 	var/description        //Description of this gear. If left blank will default to the description of the pathed item.
 	var/path               //Path to item.
 	var/cost = 1           //Number of points used. Items in general cost 1 point, storage/armor/gloves/special use costs 2 points.
-	var/price              //Price of item, opyxes
-	var/discount           //Discount to a price
-	var/patron_tier        //Patron tier restriction
 	var/slot               //Slot to equip to.
 	var/list/allowed_roles //Roles that can spawn with this item.
 	var/whitelisted        //Term to check the whitelist for..

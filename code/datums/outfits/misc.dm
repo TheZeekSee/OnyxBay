@@ -21,7 +21,7 @@
 	name = "Soviet admiral"
 	head = /obj/item/clothing/head/hgpiratecap
 	l_ear = /obj/item/device/radio/headset/heads/captain
-	glasses = /obj/item/clothing/glasses/hud/one_eyed/patch/thermal
+	glasses = /obj/item/clothing/glasses/thermal/plain/eyepatch
 	suit = /obj/item/clothing/suit/hgpirate
 
 	id_slot = slot_wear_id

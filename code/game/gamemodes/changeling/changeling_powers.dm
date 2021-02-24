@@ -60,8 +60,6 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 /mob/proc/is_regenerating()
 	if(status_flags & FAKEDEATH)
 		return TRUE
-	else
-		return FALSE
 
 /mob/proc/absorbDNA(datum/absorbed_dna/newDNA)
 	var/datum/changeling/changeling = null
@@ -397,11 +395,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	if(is_regenerating())
 		return
 	var/datum/changeling/changeling = changeling_power(1,1,0)
-	if(!changeling)
-		return
-
-	if(HAS_TRANSFORMATION_MOVEMENT_HANDLER(src))
-		return
+	if(!changeling)	return
 
 	var/list/names = list()
 	for(var/datum/dna/DNA in changeling.absorbed_dna)
@@ -425,7 +419,8 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	for (var/obj/item/weapon/implant/I in C) //Still preserving implants
 		implants += I
 
-	ADD_TRANSFORMATION_MOVEMENT_HANDLER(C)
+	C.transforming = 1
+	C.canmove = 0
 	C.icon = null
 	C.overlays.Cut()
 	C.set_invisibility(101)
@@ -499,7 +494,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 		return
 
 	if(mind.changeling.true_dead)
-		to_chat(src, SPAN_NOTICE("We can not do this. We are really dead."))
+		to_chat(src, "<span class='notice'>We can not do this. We are really dead.</span>")
 		return
 
 	if(is_regenerating())
@@ -513,8 +508,6 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	update_canmove()
 
 	emote("gasp")
-
-	to_chat(usr, SPAN_NOTICE("We're starting to regenerate."))
 
 	addtimer(CALLBACK(src, .revive_ready), rand(80 SECONDS, 200 SECONDS))
 
@@ -603,7 +596,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	C.digitalcamo = !C.digitalcamo
 
 	spawn(0)
-		while(C && C.digitalcamo && C.mind && C.mind.changeling && !is_regenerating())
+		while(C && C.digitalcamo && C.mind && C.mind.changeling)
 			C.mind.changeling.chem_charges = max(C.mind.changeling.chem_charges - 1, 0)
 			sleep(40)
 
@@ -745,7 +738,7 @@ var/list/datum/absorbed_dna/hivemind_bank = list()
 	feedback_add_details("changeling_powers","MV")
 
 	spawn(0)
-		while(src && src.mind && src.mind.changeling && src.mind.changeling.mimicing && !is_regenerating())
+		while(src && src.mind && src.mind.changeling && src.mind.changeling.mimicing)
 			src.mind.changeling.chem_charges = max(src.mind.changeling.chem_charges - 1, 0)
 			sleep(40)
 		if(src && src.mind && src.mind.changeling)
@@ -1069,7 +1062,7 @@ var/list/datum/absorbed_dna/hivemind_bank = list()
 		/datum/reagent/mercury,
 		/datum/reagent/radium,
 		/datum/reagent/acid/hydrochloric,
-		/datum/reagent/toxin/plasma
+		/datum/reagent/toxin/phoron
 		)
 
 	var/datum/reagent/target_chem = input(src, "Choose reagent:") as null|anything in chemistry
@@ -1077,12 +1070,12 @@ var/list/datum/absorbed_dna/hivemind_bank = list()
 	if(changeling.chem_charges <= amount)
 		to_chat(src, "<span class='notice'>Not enough chemicals.</span>")
 		return
-	if(target_chem == /datum/reagent/toxin/plasma)
+	if(target_chem == /datum/reagent/toxin/phoron)
 		if(changeling.chem_charges <= 2*amount)
 			to_chat(src, "<span class='notice'>Not enough chemicals.</span>")
 			return
 	changeling.pick_chemistry.add_reagent(target_chem, amount)
-	if(target_chem == /datum/reagent/toxin/plasma)
+	if(target_chem == /datum/reagent/toxin/phoron)
 		amount *= 2
 	changeling.chem_charges -= amount
 	if(!(/mob/proc/changeling_chemical_sting in src.verbs))
@@ -1191,13 +1184,13 @@ var/list/datum/absorbed_dna/hivemind_bank = list()
 			to_chat(src, "<span class='notice'>We may move at our normal speed while hidden.</span>")
 
 		if(must_walk)
-			H.set_m_intent(M_WALK)
+			H.set_m_intent("walk")
 
 		var/remain_cloaked = TRUE
-		while(remain_cloaked && !is_regenerating()) //This loop will keep going until the player uncloaks.
+		while(remain_cloaked) //This loop will keep going until the player uncloaks.
 			sleep(1 SECOND) // Sleep at the start so that if something invalidates a cloak, it will drop immediately after the check and not in one second.
 
-			if(H.m_intent != M_WALK && must_walk) // Moving too fast uncloaks you.
+			if(H.m_intent != "walk" && must_walk) // Moving too fast uncloaks you.
 				remain_cloaked = 0
 			if(!H.mind.changeling.cloaked)
 				remain_cloaked = 0
@@ -1215,7 +1208,7 @@ var/list/datum/absorbed_dna/hivemind_bank = list()
 		H.invisibility = initial(invisibility)
 		visible_message("<span class='warning'>[src] suddenly fades in, seemingly from nowhere!</span>",
 		"<span class='notice'>We revert our camouflage, revealing ourselves.</span>")
-		H.set_m_intent(M_RUN)
+		H.set_m_intent("run")
 		H.mind.changeling.cloaked = 0
 		H.mind.changeling.chem_recharge_rate = old_regen_rate
 
@@ -1731,7 +1724,7 @@ var/list/datum/absorbed_dna/hivemind_bank = list()
 		to_chat(C, "<span class='notice'>We are unable to feel pain anymore.</span>")
 
 	spawn(0)
-		while(C && !C.can_feel_pain() && C.mind && C.mind.changeling && !is_regenerating())
+		while(C && !C.can_feel_pain() && C.mind && C.mind.changeling)
 			C.mind.changeling.chem_charges = max(C.mind.changeling.chem_charges - 3, 0)
 			if (C.mind.changeling.chem_charges == 0)
 				C.no_pain = !C.no_pain
@@ -1759,7 +1752,7 @@ var/list/datum/absorbed_dna/hivemind_bank = list()
 		to_chat(H, "<span class='notice'>We activate our stemocyte pool and begin intensive fleshmending.</span>")
 
 		spawn(0)
-			while(H && H.mind && H.mind.changeling.heal && H.mind.changeling.damaged && !is_regenerating())
+			while(H && H.mind && H.mind.changeling.heal && H.mind.changeling.damaged)
 				H.mind.changeling.chem_charges = max(H.mind.changeling.chem_charges - 1, 0)
 				if(H.getBruteLoss())
 					H.adjustBruteLoss(-15 * config.organ_regeneration_multiplier)	//Heal brute better than other ouchies.

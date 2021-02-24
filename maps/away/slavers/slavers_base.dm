@@ -179,7 +179,7 @@
 	name = "Dead abolitionist"
 	uniform = /obj/item/clothing/under/abol_uniform
 	shoes = /obj/item/clothing/shoes/jackboots
-	head = /obj/item/clothing/head/helmet/syndi
+	head = /obj/item/clothing/head/helmet/merc
 
 /obj/item/clothing/under/abol_uniform
 	name = "abolitionist combat suit"

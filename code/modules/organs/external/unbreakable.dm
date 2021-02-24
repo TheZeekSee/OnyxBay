@@ -2,12 +2,12 @@
 /obj/item/organ/external/chest/unbreakable
 	dislocated = -1
 	arterial_bleed_severity = 0
-	limb_flags = ORGAN_FLAG_GENDERED_ICON
+	limb_flags = 0
 
 /obj/item/organ/external/groin/unbreakable
 	dislocated = -1
 	arterial_bleed_severity = 0
-	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_GENDERED_ICON
+	limb_flags = ORGAN_FLAG_CAN_AMPUTATE
 
 /obj/item/organ/external/arm/unbreakable
 	dislocated = -1

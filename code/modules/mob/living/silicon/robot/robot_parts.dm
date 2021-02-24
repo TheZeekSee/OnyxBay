@@ -17,8 +17,6 @@
 /obj/item/robot_parts/New(newloc, model)
 	..(newloc)
 	if(model_info && model)
-		if(isnull(model))
-			model = "Unbranded"
 		model_info = model
 		var/datum/robolimb/R = all_robolimbs[model]
 		if(R)
@@ -305,9 +303,6 @@
 			var/obj/item/organ/external/chest = H.organs_by_name[BP_CHEST]
 			var/chest_company = model_info
 			chest.robotize(chest_company)
-
-			var/obj/item/organ/external/groin = H.organs_by_name[BP_GROIN]
-			groin.robotize(chest_company)
 
 			// Cleanup
 			qdel(W)

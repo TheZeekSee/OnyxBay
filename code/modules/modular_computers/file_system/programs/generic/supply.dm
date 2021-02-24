@@ -268,7 +268,7 @@
 	t += "CONTENTS:<br>"
 	t += O.object.manifest
 	t += "<hr>"
-	print_text(t, user, rawhtml = TRUE)
+	print_text(t, user)
 
 /datum/nano_module/supply/proc/print_summary(mob/user)
 	var/t = ""

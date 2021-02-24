@@ -46,12 +46,14 @@ obj/structure/windoor_assembly/Destroy()
 /obj/structure/windoor_assembly/update_icon()
 	icon_state = "[facing]_[secure]windoor_assembly[state]"
 
-/obj/structure/windoor_assembly/CanPass(atom/movable/mover, turf/target)
+/obj/structure/windoor_assembly/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(istype(mover) && mover.pass_flags & PASS_FLAG_GLASS)
-		return TRUE
+		return 1
 	if(get_dir(loc, target) == dir) //Make sure looking at appropriate border
+		if(air_group) return 0
 		return !density
-	return TRUE
+	else
+		return 1
 
 /obj/structure/windoor_assembly/CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
 	if(istype(mover) && mover.pass_flags & PASS_FLAG_GLASS)

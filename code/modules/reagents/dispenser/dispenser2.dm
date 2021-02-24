@@ -21,8 +21,9 @@
 	anchored = 1
 	obj_flags = OBJ_FLAG_ANCHORABLE
 
-/obj/machinery/chemical_dispenser/Initialize()
-	. = ..()
+/obj/machinery/chemical_dispenser/New()
+	..()
+
 	if(spawn_cartridges)
 		for(var/type in spawn_cartridges)
 			add_cartridge(new type(src))

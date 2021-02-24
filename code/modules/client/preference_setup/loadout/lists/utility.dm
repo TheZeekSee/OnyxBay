@@ -40,6 +40,17 @@
 	path = /obj/item/device/camera
 	cost = 2
 
+/datum/gear/utility/stethoscope
+	display_name = "stethoscope (medical)"
+	path = /obj/item/clothing/accessory/stethoscope
+	cost = 2
+
+/datum/gear/mask/gas
+	sort_category = "Utility"
+	display_name = "old gas mask"
+	path = /obj/item/clothing/mask/gas/old
+	cost = 3
+
 /datum/gear/mask/gas/clear
 	display_name = "clear gas mask"
 	path = /obj/item/clothing/mask/gas/clear
@@ -63,3 +74,27 @@
 	path = /obj/item/music_player/boombox
 	flags = GEAR_HAS_COLOR_SELECTION
 	cost = 4
+
+/****************
+modular computers
+****************/
+
+/datum/gear/utility/cheaptablet
+	display_name = "tablet computer, cheap"
+	path = /obj/item/modular_computer/tablet/preset/custom_loadout/cheap
+	cost = 3
+
+/datum/gear/utility/normaltablet
+	display_name = "tablet computer, advanced"
+	path = /obj/item/modular_computer/tablet/preset/custom_loadout/advanced
+	cost = 4
+
+/datum/gear/utility/cheaplaptop
+	display_name = "laptop computer, cheap"
+	path = /obj/item/modular_computer/laptop/preset/custom_loadout/cheap
+	cost = 5
+
+/datum/gear/utility/normallaptop
+	display_name = "laptop computer, advanced"
+	path = /obj/item/modular_computer/laptop/preset/custom_loadout/advanced
+	cost = 6

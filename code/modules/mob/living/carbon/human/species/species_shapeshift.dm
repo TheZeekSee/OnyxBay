@@ -7,9 +7,8 @@ var/list/wrapped_species_by_ref = list()
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
-		// /mob/living/carbon/human/proc/shapeshifter_select_hair,
-		/mob/living/carbon/human/proc/shapeshifter_select_gender,
-		/mob/living/carbon/human/proc/shapeshifter_select_body_build
+		/mob/living/carbon/human/proc/shapeshifter_select_hair,
+		/mob/living/carbon/human/proc/shapeshifter_select_gender
 		)
 
 	var/list/valid_transform_species = list()
@@ -75,7 +74,6 @@ var/list/wrapped_species_by_ref = list()
 		E.sync_colour_to_human(H)
 
 // Verbs follow.
-/* -- Incredibly Broken. TODO: Try to fix it later with ignore hair species flags in get_hair_icon() --
 /mob/living/carbon/human/proc/shapeshifter_select_hair()
 
 	set name = "Select Hair"
@@ -93,39 +91,30 @@ var/list/wrapped_species_by_ref = list()
 	if(species.get_facial_hair_styles(gender))
 		var/new_hair = input("Select a facial hair style.", "Shapeshifter Hair") as null|anything in species.get_facial_hair_styles(gender)
 		change_facial_hair(new_hair ? new_hair : "Shaved")
-*/
+
 /mob/living/carbon/human/proc/shapeshifter_select_gender()
 
 	set name = "Select Gender"
 	set category = "Abilities"
 
-	if(stat)
-		to_chat(usr, SPAN_WARNING("You can't use your abilities while you unconscious."))
-		return
-	if(world.time < last_special)
-		to_chat(usr, SPAN_WARNING("You can't use your abilities so fast!"))
+	if(stat || world.time < last_special)
 		return
 
 	last_special = world.time + 50
 
-	var/new_gender = input("Please select a gender.", "Shapeshifter Gender") as null|anything in list(FEMALE, MALE)
+	var/new_gender = input("Please select a gender.", "Shapeshifter Gender") as null|anything in list(FEMALE, MALE, NEUTER, PLURAL)
 	if(!new_gender)
 		return
 
-	visible_message(SPAN_NOTICE("\The [src]'s form contorts subtly."))
+	visible_message("<span class='notice'>\The [src]'s form contorts subtly.</span>")
 	change_gender(new_gender)
-	shapeshifter_sanitize_body()
 
 /mob/living/carbon/human/proc/shapeshifter_select_shape()
 
 	set name = "Select Body Shape"
 	set category = "Abilities"
 
-	if(stat)
-		to_chat(usr, SPAN_WARNING("You can't use your abilities while you unconscious."))
-		return
-	if(world.time < last_special)
-		to_chat(usr, SPAN_WARNING("You can't use your abilities so fast!"))
+	if(stat || world.time < last_special)
 		return
 
 	last_special = world.time + 50
@@ -135,7 +124,6 @@ var/list/wrapped_species_by_ref = list()
 		return
 
 	wrapped_species_by_ref["\ref[src]"] = new_species
-	shapeshifter_sanitize_body()
 	visible_message("<span class='notice'>\The [src] shifts and contorts, taking the form of \a ["\improper [new_species]"]!</span>")
 	regenerate_icons()
 
@@ -144,11 +132,7 @@ var/list/wrapped_species_by_ref = list()
 	set name = "Select Body Colour"
 	set category = "Abilities"
 
-	if(stat)
-		to_chat(usr, SPAN_WARNING("You can't use your abilities while you unconscious."))
-		return
-	if(world.time < last_special)
-		to_chat(usr, SPAN_WARNING("You can't use your abilities so fast!"))
+	if(stat || world.time < last_special)
 		return
 
 	last_special = world.time + 50
@@ -158,7 +142,7 @@ var/list/wrapped_species_by_ref = list()
 		return
 	shapeshifter_set_colour(new_skin)
 
-/mob/living/carbon/human/proc/shapeshifter_set_colour(new_skin) // something is wrong with colours on humans. TODO: fix
+/mob/living/carbon/human/proc/shapeshifter_set_colour(new_skin)
 
 	r_skin =   hex2num(copytext(new_skin, 2, 4))
 	g_skin =   hex2num(copytext(new_skin, 4, 6))
@@ -177,33 +161,3 @@ var/list/wrapped_species_by_ref = list()
 		E.sync_colour_to_human(src)
 
 	regenerate_icons()
-
-/mob/living/carbon/human/proc/shapeshifter_select_body_build()
-
-	set name = "Select Body Build"
-	set category = "Abilities"
-
-	if(stat)
-		to_chat(usr, SPAN_WARNING("You can't use your abilities while you unconscious."))
-		return
-	if(world.time < last_special)
-		to_chat(usr, SPAN_WARNING("You can't use your abilities so fast!"))
-		return
-
-	last_special = world.time + 30
-
-	var/datum/species/S = all_species[wrapped_species_by_ref["\ref[src]"]]
-
-	if(S.get_body_build_datum_list(gender))
-		var/new_body_build = input("Please select a new body build.", "Shapeshifter Body Build") as null|anything in S.get_body_build_datum_list(gender)
-		if(!new_body_build || body_build == new_body_build)
-			return
-		change_body_build(new_body_build)
-		visible_message(SPAN_NOTICE("\The [src]'s form contorts subtly."))
-
-/mob/living/carbon/human/proc/shapeshifter_sanitize_body()
-	var/datum/species/S = all_species[wrapped_species_by_ref["\ref[src]"]]
-	var/list/body_builds = S.get_body_build_datum_list(src.gender)
-	if(!(body_build in body_builds))
-		body_build = body_builds[1]
-		regenerate_icons()

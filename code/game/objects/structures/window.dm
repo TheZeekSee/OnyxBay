@@ -3,7 +3,6 @@
 	desc = "A window."
 	icon = 'icons/obj/structures.dmi'
 	density = 1
-	can_atmos_pass = ATMOS_PASS_PROC
 	w_class = ITEM_SIZE_NORMAL
 
 	layer = SIDE_WINDOW_LAYER
@@ -23,6 +22,7 @@
 	var/silicate = 0 // number of units of silicate
 
 	pull_sound = "pull_stone"
+	atmos_canpass = CANPASS_PROC
 
 /obj/structure/window/examine(mob/user)
 	. = ..()
@@ -131,19 +131,15 @@
 /obj/structure/window/proc/is_full_window()
 	return (dir == SOUTHWEST || dir == SOUTHEAST || dir == NORTHWEST || dir == NORTHEAST)
 
-/obj/structure/window/CanPass(atom/movable/mover, turf/target)
+/obj/structure/window/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(istype(mover) && mover.pass_flags & PASS_FLAG_GLASS)
-		return TRUE
+		return 1
 	if(is_full_window())
-		return FALSE	//full tile window, you can't move into it!
+		return 0	//full tile window, you can't move into it!
 	if(get_dir(loc, target) & dir)
 		return !density
-	return TRUE
-
-/obj/structure/window/CanZASPass(turf/T, is_zone)
-	if(is_fulltile() || get_dir(T, loc) == turn(dir, 180)) // Make sure we're handling the border correctly.
-		return !anchored // If it's anchored, it'll block air.
-	return TRUE // Don't stop airflow from the other sides.
+	else
+		return 1
 
 
 /obj/structure/window/CheckExit(atom/movable/O as mob|obj, target as turf)
@@ -423,32 +419,32 @@
 	damage_per_fire_tick = 2.0
 	maxhealth = 12.0
 
-/obj/structure/window/plasmabasic
-	name = "plass window"
-	desc = "A plasmasilicate alloy window. It seems to be quite strong."
-	basestate = "plasmawindow"
-	icon_state = "plasmawindow"
-	shardtype = /obj/item/weapon/material/shard/plasma
-	glasstype = /obj/item/stack/material/glass/plass
+/obj/structure/window/phoronbasic
+	name = "phoron window"
+	desc = "A borosilicate alloy window. It seems to be quite strong."
+	basestate = "phoronwindow"
+	icon_state = "phoronwindow"
+	shardtype = /obj/item/weapon/material/shard/phoron
+	glasstype = /obj/item/stack/material/glass/phoronglass
 	maximal_heat = T0C + 2000
 	damage_per_fire_tick = 1.0
 	maxhealth = 40.0
 
-/obj/structure/window/plasmareinforced
-	name = "reinforced plass window"
-	desc = "A plasmasilicate alloy window, with rods supporting it. It seems to be very strong."
-	basestate = "plasmarwindow"
-	icon_state = "plasmarwindow"
-	shardtype = /obj/item/weapon/material/shard/plasma
-	glasstype = /obj/item/stack/material/glass/rplass
+/obj/structure/window/phoronreinforced
+	name = "reinforced borosilicate window"
+	desc = "A borosilicate alloy window, with rods supporting it. It seems to be very strong."
+	basestate = "phoronrwindow"
+	icon_state = "phoronrwindow"
+	shardtype = /obj/item/weapon/material/shard/phoron
+	glasstype = /obj/item/stack/material/glass/phoronrglass
 	reinf = 1
 	maximal_heat = T0C + 4000
-	damage_per_fire_tick = 1.0 // This should last for 80 fire ticks if the window is not damaged at all. The idea is that plass windows have something like ablative layer that protects them for a while.
+	damage_per_fire_tick = 1.0 // This should last for 80 fire ticks if the window is not damaged at all. The idea is that borosilicate windows have something like ablative layer that protects them for a while.
 	maxhealth = 80.0
 
-/obj/structure/window/plasmareinforced/full
+/obj/structure/window/phoronreinforced/full
 	dir = 5
-	icon_state = "plasmawindow0"
+	icon_state = "phoronwindow0"
 
 /obj/structure/window/reinforced
 	name = "reinforced window"

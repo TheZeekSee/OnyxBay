@@ -209,6 +209,9 @@ obj/item/clothing/mask/smokable/ecig/deluxe/examine(mob/user)
 	volume = 20
 	atom_flags = ATOM_FLAG_OPEN_CONTAINER
 
+/obj/item/weapon/reagent_containers/ecig_cartridge/New()
+	create_reagents(volume)
+
 /obj/item/weapon/reagent_containers/ecig_cartridge/examine(mob/user as mob)//to see how much left
 	. = ..()
 	. += "\nThe cartridge has [reagents.total_volume] units of liquid remaining."
@@ -221,32 +224,32 @@ obj/item/clothing/mask/smokable/ecig/deluxe/examine(mob/user)
 /obj/item/weapon/reagent_containers/ecig_cartridge/blanknico
 	name = "flavorless nicotine cartridge"
 	desc = "A small metal cartridge which contains an atomizing coil and a solution to be atomized. The label says you can add whatever flavoring agents you want."
-/obj/item/weapon/reagent_containers/ecig_cartridge/blanknico/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/ecig_cartridge/blanknico/New()
+	..()
 	reagents.add_reagent(/datum/reagent/tobacco/liquid, 5)
 	reagents.add_reagent(/datum/reagent/water, 10)
 
 /obj/item/weapon/reagent_containers/ecig_cartridge/med_nicotine
 	name = "tobacco flavour cartridge"
 	desc =  "A small metal cartridge which contains an atomizing coil and a solution to be atomized. The label says its tobacco flavored."
-/obj/item/weapon/reagent_containers/ecig_cartridge/med_nicotine/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/ecig_cartridge/med_nicotine/New()
+	..()
 	reagents.add_reagent(/datum/reagent/tobacco, 5)
 	reagents.add_reagent(/datum/reagent/water, 15)
 
 /obj/item/weapon/reagent_containers/ecig_cartridge/high_nicotine
 	name = "high nicotine tobacco flavour cartridge"
 	desc = "A small metal cartridge which contains an atomizing coil and a solution to be atomized. The label says its tobacco flavored, with extra nicotine."
-/obj/item/weapon/reagent_containers/ecig_cartridge/high_nicotine/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/ecig_cartridge/high_nicotine/New()
+	..()
 	reagents.add_reagent(/datum/reagent/tobacco, 10)
 	reagents.add_reagent(/datum/reagent/water, 10)
 
 /obj/item/weapon/reagent_containers/ecig_cartridge/orange
 	name = "orange flavour cartridge"
 	desc = "A small metal cartridge which contains an atomizing coil and a solution to be atomized. The label says its orange flavored."
-/obj/item/weapon/reagent_containers/ecig_cartridge/orange/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/ecig_cartridge/orange/New()
+	..()
 	reagents.add_reagent(/datum/reagent/tobacco/liquid, 5)
 	reagents.add_reagent(/datum/reagent/water, 10)
 	reagents.add_reagent(/datum/reagent/drink/juice/orange, 5)
@@ -254,8 +257,8 @@ obj/item/clothing/mask/smokable/ecig/deluxe/examine(mob/user)
 /obj/item/weapon/reagent_containers/ecig_cartridge/mint
 	name = "mint flavour cartridge"
 	desc = "A small metal cartridge which contains an atomizing coil and a solution to be atomized. The label says its mint flavored."
-/obj/item/weapon/reagent_containers/ecig_cartridge/mint/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/ecig_cartridge/mint/New()
+	..()
 	reagents.add_reagent(/datum/reagent/tobacco/liquid, 5)
 	reagents.add_reagent(/datum/reagent/water, 10)
 	reagents.add_reagent(/datum/reagent/menthol, 5)
@@ -263,8 +266,8 @@ obj/item/clothing/mask/smokable/ecig/deluxe/examine(mob/user)
 /obj/item/weapon/reagent_containers/ecig_cartridge/watermelon
 	name = "watermelon flavour cartridge"
 	desc = "A small metal cartridge which contains an atomizing coil and a solution to be atomized. The label says its watermelon flavored."
-/obj/item/weapon/reagent_containers/ecig_cartridge/watermelon/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/ecig_cartridge/watermelon/New()
+	..()
 	reagents.add_reagent(/datum/reagent/tobacco/liquid, 5)
 	reagents.add_reagent(/datum/reagent/water, 10)
 	reagents.add_reagent(/datum/reagent/drink/juice/watermelon, 5)
@@ -272,8 +275,8 @@ obj/item/clothing/mask/smokable/ecig/deluxe/examine(mob/user)
 /obj/item/weapon/reagent_containers/ecig_cartridge/grape
 	name = "grape flavour cartridge"
 	desc = "A small metal cartridge which contains an atomizing coil and a solution to be atomized. The label says its grape flavored."
-/obj/item/weapon/reagent_containers/ecig_cartridge/grape/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/ecig_cartridge/grape/New()
+	..()
 	reagents.add_reagent(/datum/reagent/tobacco/liquid, 5)
 	reagents.add_reagent(/datum/reagent/water, 10)
 	reagents.add_reagent(/datum/reagent/drink/juice/grape, 5)
@@ -281,8 +284,8 @@ obj/item/clothing/mask/smokable/ecig/deluxe/examine(mob/user)
 /obj/item/weapon/reagent_containers/ecig_cartridge/lemonlime
 	name = "lemon-lime flavour cartridge"
 	desc = "A small metal cartridge which contains an atomizing coil and a solution to be atomized. The label says its lemon-lime flavored."
-/obj/item/weapon/reagent_containers/ecig_cartridge/lemonlime/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/ecig_cartridge/lemonlime/New()
+	..()
 	reagents.add_reagent(/datum/reagent/tobacco/liquid, 5)
 	reagents.add_reagent(/datum/reagent/water, 10)
 	reagents.add_reagent(/datum/reagent/drink/lemon_lime, 5)
@@ -290,8 +293,8 @@ obj/item/clothing/mask/smokable/ecig/deluxe/examine(mob/user)
 /obj/item/weapon/reagent_containers/ecig_cartridge/coffee
 	name = "coffee flavour cartridge"
 	desc = "A small metal cartridge which contains an atomizing coil and a solution to be atomized. The label says its coffee flavored."
-/obj/item/weapon/reagent_containers/ecig_cartridge/coffee/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/ecig_cartridge/coffee/New()
+	..()
 	reagents.add_reagent(/datum/reagent/tobacco/liquid, 5)
 	reagents.add_reagent(/datum/reagent/water, 10)
 	reagents.add_reagent(/datum/reagent/drink/coffee, 5)

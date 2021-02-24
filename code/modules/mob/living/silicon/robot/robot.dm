@@ -156,10 +156,6 @@
 	hud_list[IMPTRACK_HUD]    = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
 	hud_list[SPECIALROLE_HUD] = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
 
-/mob/living/silicon/robot/Initialize()
-	. = ..()
-	AddMovementHandler(/datum/movement_handler/robot/use_power, /datum/movement_handler/mob/space)
-
 /mob/living/silicon/robot/proc/recalculate_synth_capacities()
 	if(!module || !module.synths)
 		return
@@ -267,8 +263,8 @@
 	modules.Add(GLOB.robot_module_types)
 	var/decl/security_state/security_state = decls_repository.get_decl(GLOB.using_map.security_state)
 	if((crisis && security_state.current_security_level_is_same_or_higher_than(security_state.high_security_level)) || crisis_override) //Leaving this in until it's balanced appropriately.
-		to_chat(src, SPAN("warning", "Crisis mode active. Combat module available."))
-		modules += "Combat"
+		to_chat(src, "<span class='warning'>Crisis mode active. Combat module available.</span>")
+		modules+="Combat"
 	modtype = input("Please, select a module!", "Robot module", null, null) as null|anything in modules
 	if(module)
 		return
@@ -277,8 +273,7 @@
 
 	var/module_type = robot_modules[modtype]
 	new module_type(src)
-	if(modtype != "Standard")
-		GLOB.robot_module_types.Remove(modtype)
+	GLOB.robot_module_types.Remove(modtype)
 	hands.icon_state = lowertext(modtype)
 	feedback_inc("cyborg_[lowertext(modtype)]",1)
 	updatename()
@@ -972,6 +967,7 @@
 	disconnect_from_ai()
 	lawupdate = 0
 	lockcharge = 0
+	canmove = 1
 	scrambledcodes = 1
 	//Disconnect it's camera so it's not so easily tracked.
 	if(src.camera)
@@ -1200,11 +1196,9 @@
 	spark_system.start()
 
 /mob/living/silicon/robot/incapacitated(incapacitation_flags = INCAPACITATION_DEFAULT)
-	if((incapacitation_flags & INCAPACITATION_FORCELYING) && (lockcharge || !is_component_functioning("actuator")))
+	..()
+	if ((incapacitation_flags & INCAPACITATION_FORCELYING) && (lockcharge))
 		return 1
-	if((incapacitation_flags & INCAPACITATION_KNOCKOUT) && !is_component_functioning("actuator"))
-		return 1
-	return ..()
 
 /mob/living/silicon/robot/proc/drop_all_upgrades()
 	for(var/obj/item/borg/upgrade/U in src)

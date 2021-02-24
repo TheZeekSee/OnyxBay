@@ -35,8 +35,8 @@
 	desc = "You wanna put a bangin- oh, nevermind."
 	icon_state = "donk"
 
-/obj/item/weapon/reagent_containers/food/snacks/donkpocket/variable/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/food/snacks/donkpocket/variable/New()
+	..()
 	heat()
 
 /obj/item/weapon/reagent_containers/food/snacks/tofukabob/variable

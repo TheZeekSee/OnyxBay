@@ -155,8 +155,11 @@
 				var/dat = "<h3>Activity log of guest pass terminal #[uid]</h3><br>"
 				for (var/entry in internal_log)
 					dat += "[entry]<br><hr>"
-				var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(loc)
-				P.set_content(dat, "activity log", TRUE)
+//				to_chat(user, "Printing the log, standby...")
+				//sleep(50)
+				var/obj/item/weapon/paper/P = new /obj/item/weapon/paper( loc )
+				P.SetName("activity log")
+				P.info = dat
 				. = TOPIC_REFRESH
 
 			if ("issue")

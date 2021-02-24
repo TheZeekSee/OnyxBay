@@ -190,7 +190,7 @@ area/space/atmosalert()
 	icon_state = "shuttle3"
 
 /area/syndicate_mothership/elite_squad
-	name = "\improper Syndicate Elite Squad"
+	name = "\improper Elite Mercenary Squad"
 	icon_state = "syndie-elite"
 
 ////////////

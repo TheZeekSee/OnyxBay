@@ -55,10 +55,9 @@ var/list/limb_icon_cache = list()
 		return
 
 	SetName("[owner.real_name]'s head")
-	var/mob/living/carbon/human/victim = owner
 	..()
-	update_icon_drop(victim)
-	victim.update_hair()
+	update_icon_drop(owner)
+	owner.update_hair()
 
 	//Head markings, duplicated (sadly) below.
 	for(var/M in markings)
@@ -132,11 +131,10 @@ var/list/limb_icon_cache = list()
 			icon_cache_key += "_model_[model]"
 
 		if(force_icon && (status & ORGAN_CUT_AWAY))
-			dir = SOUTH // Facing towards the screen
+			dir = NORTH
 		else
 			dir = EAST
-		if(mob_icon)
-			icon = mob_icon
+		icon = mob_icon
 
 /obj/item/organ/external/proc/update_icon_drop(mob/living/carbon/human/powner)
 	return

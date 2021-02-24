@@ -35,7 +35,6 @@
 		"meetinghall"      = new /datum/holodeck_program(/area/holodeck/source_meetinghall),
 		"courtroom"        = new /datum/holodeck_program(/area/holodeck/source_courtroom, list('sound/music/traitor.ogg')),
 		"wildlifecarp"     = new /datum/holodeck_program(/area/holodeck/source_wildlife, list()),
-		"chess"            = new /datum/holodeck_program(/area/holodeck/source_chess, list()),
 		"turnoff"          = new /datum/holodeck_program(/area/holodeck/source_plating, list())
 	)
 
@@ -53,8 +52,7 @@
 			"Snow Field"        = "snowfield",
 			"Theatre"           = "theatre",
 			"Meeting Hall"      = "meetinghall",
-			"Courtroom"         = "courtroom",
-			"Chess Field"       = "chess"
+			"Courtroom"         = "courtroom"
 		)
 
 	)

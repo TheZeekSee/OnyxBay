@@ -16,8 +16,9 @@
 		T.update_icon()
 
 //Creates a new turf
-/turf/proc/ChangeTurf(turf/N, tell_universe = TRUE, force_lighting_update = FALSE)
-	ASSERT(N)
+/turf/proc/ChangeTurf(turf/N, tell_universe=1, force_lighting_update = 0)
+	if (!N)
+		return
 
 	// This makes sure that turfs are not changed to space when one side is part of a zone
 	if(N == /turf/space)
@@ -52,7 +53,6 @@
 		old_contents += A
 		A.forceMove(null)
 
-	var/old_opaque_counter = opaque_counter
 	var/turf/simulated/W = new N( locate(src.x, src.y, src.z) )
 	for(var/atom/movable/A in old_contents)
 		A.forceMove(W)
@@ -60,13 +60,12 @@
 	for(var/atom/movable/A in old_contents)
 		A.forceMove(W)
 
-	W.opaque_counter = old_opaque_counter
-	W.RecalculateOpacity()
+	W.opaque_counter = opaque_counter
 
 	if(ispath(N, /turf/simulated))
 		if(old_fire)
 			fire = old_fire
-		if(istype(W, /turf/simulated/floor))
+		if (istype(W,/turf/simulated/floor))
 			W.RemoveLattice()
 	else if(old_fire)
 		old_fire.RemoveFire()

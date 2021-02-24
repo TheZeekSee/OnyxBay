@@ -3,7 +3,7 @@
  *		Oxygen
  *		Anesthetic
  *		Air
- *		Plasma
+ *		Phoron
  *		Hydrogen
  *		Emergency Oxygen
  */
@@ -46,16 +46,16 @@
 	starting_pressure = list("oxygen" = 6*ONE_ATMOSPHERE*O2STANDARD, "nitrogen" = 6*ONE_ATMOSPHERE*N2STANDARD)
 
 /*
- * Plasma
+ * Phoron
  */
-/obj/item/weapon/tank/plasma
-	name = "plasma tank"
-	desc = "Contains dangerous plasma. Do not inhale. Warning: extremely flammable."
-	icon_state = "plasma"
+/obj/item/weapon/tank/phoron
+	name = "phoron tank"
+	desc = "Contains dangerous phoron. Do not inhale. Warning: extremely flammable."
+	icon_state = "phoron"
 	gauge_icon = null
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = null	//they have no straps!
-	starting_pressure = list("plasma" = 3*ONE_ATMOSPHERE)
+	starting_pressure = list("phoron" = 3*ONE_ATMOSPHERE)
 
 /*
  * Hydrogen

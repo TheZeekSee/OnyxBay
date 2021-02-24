@@ -19,29 +19,29 @@
 
 /datum/rig_vision/nvg
 	mode = "night vision"
-	glasses = /obj/item/clothing/glasses/hud/standard/night/active
+	glasses = /obj/item/clothing/glasses/night
 
 /datum/rig_vision/thermal
 	mode = "thermal scanner"
-	glasses = /obj/item/clothing/glasses/hud/standard/thermal/active
+	glasses = /obj/item/clothing/glasses/thermal
 
 /datum/rig_vision/meson
 	mode = "meson scanner"
-	glasses = /obj/item/clothing/glasses/hud/standard/meson/active
+	glasses = /obj/item/clothing/glasses/meson
 
 /datum/rig_vision/sechud
 	mode = "security HUD"
-	glasses = /obj/item/clothing/glasses/hud/standard/security/active
+	glasses = /obj/item/clothing/glasses/hud/security
 
 /datum/rig_vision/medhud
 	mode = "medical HUD"
-	glasses = /obj/item/clothing/glasses/hud/standard/medical/active
+	glasses = /obj/item/clothing/glasses/hud/health
 
 /obj/item/rig_module/vision
 
 	name = "hardsuit visor"
 	desc = "A layered, translucent visor system for a hardsuit."
-	icon_state = "hud_multi"
+	icon_state = "optics"
 
 	interface_name = "optical scanners"
 	interface_desc = "An integrated multi-mode vision system."
@@ -69,7 +69,7 @@
 
 	name = "hardsuit optical package"
 	desc = "A complete visor system of optical scanners and vision modes."
-	icon_state = "hud_full"
+	icon_state = "fulloptics"
 
 
 	interface_name = "multi optical visor"
@@ -83,48 +83,48 @@
 
 /obj/item/rig_module/vision/meson
 
-	name = "hardsuit meson matrix"
+	name = "hardsuit meson scanner"
 	desc = "A layered, translucent visor system for a hardsuit."
-	icon_state = "hud_meson"
+	icon_state = "meson"
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 5)
 	usable = 0
 
-	interface_name = "meson HUD"
-	interface_desc = "An integrated meson heads up display."
+	interface_name = "meson scanner"
+	interface_desc = "An integrated meson scanner."
 
 	vision_modes = list(/datum/rig_vision/meson)
 
 /obj/item/rig_module/vision/thermal
 
-	name = "hardsuit thermal matrix"
+	name = "hardsuit thermal scanner"
 	desc = "A layered, translucent visor system for a hardsuit."
-	icon_state = "hud_thermal"
+	icon_state = "thermal"
 
 	usable = 0
 
-	interface_name = "thermal HUD"
-	interface_desc = "An integrated thermal heads up display."
+	interface_name = "thermal scanner"
+	interface_desc = "An integrated thermal scanner."
 
 	vision_modes = list(/datum/rig_vision/thermal)
 
 /obj/item/rig_module/vision/nvg
 
-	name = "hardsuit night vision matrix"
+	name = "hardsuit night vision interface"
 	desc = "A multi input night vision system for a hardsuit."
-	icon_state = "hud_night"
+	icon_state = "night"
 	origin_tech = list(TECH_MAGNET = 6, TECH_ENGINEERING = 6)
 	usable = 0
 
-	interface_name = "night vision HUD"
-	interface_desc = "An integrated night vision heads up display."
+	interface_name = "night vision interface"
+	interface_desc = "An integrated night vision system."
 
 	vision_modes = list(/datum/rig_vision/nvg)
 
 /obj/item/rig_module/vision/sechud
 
-	name = "hardsuit security matrix"
+	name = "hardsuit security hud"
 	desc = "A simple tactical information system for a hardsuit."
-	icon_state = "hud_sec"
+	icon_state = "securityhud"
 	origin_tech = list(TECH_MAGNET = 3, TECH_BIO = 2, TECH_ENGINEERING = 5)
 	usable = 0
 
@@ -135,9 +135,9 @@
 
 /obj/item/rig_module/vision/medhud
 
-	name = "hardsuit medical matrix"
+	name = "hardsuit medical hud"
 	desc = "A simple medical status indicator for a hardsuit."
-	icon_state = "hud_medical"
+	icon_state = "healthhud"
 	origin_tech = list(TECH_MAGNET = 3, TECH_BIO = 2, TECH_ENGINEERING = 5)
 	usable = 0
 
@@ -186,8 +186,7 @@
 
 	for(var/vision_mode in vision_modes)
 		var/datum/rig_vision/vision_datum = new vision_mode
-		if(!vision)
-			vision = vision_datum
+		if(!vision) vision = vision_datum
 		processed_vision += vision_datum
 
 	vision_modes = processed_vision

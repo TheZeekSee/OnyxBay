@@ -48,12 +48,15 @@
 
 	attack_generic(user,damage_dealt,attack_message)
 
-/obj/structure/grille/CanPass(atom/movable/mover, turf/target)
+/obj/structure/grille/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+	if(air_group || (height==0)) return 1
 	if(istype(mover) && mover.pass_flags & PASS_FLAG_GRILLE)
-		return TRUE
-	if(istype(mover, /obj/item/projectile))
-		return prob(30)
-	return !density
+		return 1
+	else
+		if(istype(mover, /obj/item/projectile))
+			return prob(30)
+		else
+			return !density
 
 /obj/structure/grille/bullet_act(obj/item/projectile/Proj)
 	if(!Proj)	return
@@ -234,4 +237,8 @@
 	desc = "A matrice built out of an unknown material, with some sort of force field blocking air around it."
 	icon_state = "grillecult"
 	health = 40 //Make it strong enough to avoid people breaking in too easily
-	can_atmos_pass = ATMOS_PASS_NO // Make sure air doesn't drain.
+
+/obj/structure/grille/cult/CanPass(atom/movable/mover, turf/target, height = 1.5, air_group = 0)
+	if(air_group)
+		return 0 //Make sure air doesn't drain
+	..()

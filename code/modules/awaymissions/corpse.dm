@@ -172,9 +172,9 @@
 
 /obj/effect/landmark/corpse/syndicate
 	name = "Syndicate Operative"
-	corpse_outfits = list(/decl/hierarchy/outfit/syndicate/armored)
+	corpse_outfits = list(/decl/hierarchy/outfit/mercenary/syndicate)
 	spawn_flags = CORPSE_SPAWNER_NO_RANDOMIZATION
 
 /obj/effect/landmark/corpse/syndicate/commando
 	name = "Syndicate Commando"
-	corpse_outfits = list(/decl/hierarchy/outfit/syndicate/armored/commando)
+	corpse_outfits = list(/decl/hierarchy/outfit/mercenary/syndicate/commando)

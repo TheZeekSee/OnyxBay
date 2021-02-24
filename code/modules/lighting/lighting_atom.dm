@@ -54,7 +54,7 @@
 	if(.)
 		var/turf/T = loc
 		if(istype(T))
-			T.RecalculateOpacity()
+			T.handle_opacity_change(src)
 
 #define LIGHT_MOVE_UPDATE \
 var/turf/old_loc = loc;\

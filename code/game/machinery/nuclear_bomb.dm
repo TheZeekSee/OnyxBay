@@ -76,14 +76,9 @@ var/bomb_set
 		if(istype(O, /obj/item/weapon/disk/nuclear))
 			if(!user.unEquip(O, src))
 				return
-			O.forceMove(src)
 			auth = O
 			add_fingerprint(user)
 			return attack_hand(user)
-		if(istype(O, /obj/item/weapon/flame/lighter/zippo/nuke))
-			add_fingerprint(user)
-			to_chat(user, "You feel a little bit dumber now.")
-			return
 
 	if(anchored)
 		switch(removal_stage)
@@ -483,19 +478,8 @@ var/bomb_set
 	for(var/obj/machinery/self_destruct/ch in get_area(src))
 		inserters += ch
 
-/obj/machinery/nuclearbomb/station/attackby(obj/item/weapon/O, mob/user)
+/obj/machinery/nuclearbomb/station/attackby(obj/item/weapon/O as obj, mob/user as mob)
 	if(isWrench(O))
-		return
-	if(istype(O, /obj/item/weapon/disk/nuclear))
-		if(!user.unEquip(O, src))
-			return
-		O.forceMove(src)
-		auth = O
-		add_fingerprint(user)
-		return attack_hand(user)
-	if(istype(O, /obj/item/weapon/flame/lighter/zippo/nuke))
-		add_fingerprint(user)
-		to_chat(user, "You feel a little bit dumber now.")
 		return
 
 /obj/machinery/nuclearbomb/station/Topic(href, href_list)

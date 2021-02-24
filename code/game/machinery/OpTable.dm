@@ -46,10 +46,13 @@
 		qdel(src)
 	return
 
-/obj/machinery/optable/CanPass(atom/movable/mover, turf/target)
+/obj/machinery/optable/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+	if(air_group || (height==0)) return 1
+
 	if(istype(mover) && mover.pass_flags & PASS_FLAG_TABLE)
-		return TRUE
-	return FALSE
+		return 1
+	else
+		return 0
 
 
 /obj/machinery/optable/MouseDrop_T(obj/O as obj, mob/user as mob)
@@ -88,7 +91,7 @@
 	if(busy)
 		to_chat(usr, SPAN_DANGER("[victim] is already undressing."))
 		return
-
+	
 	busy = TRUE
 	usr.visible_message(SPAN_DANGER("[usr] begins to undress [victim] on the table with the built-in tool."),
 						SPAN_NOTICE("You begin to undress [victim] on the table with the built-in tool."))

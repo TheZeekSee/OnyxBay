@@ -28,9 +28,7 @@
 	attacktext = "bites into"
 	a_intent = "harm"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	meat_type = /obj/item/weapon/reagent_containers/food/snacks/xenomeat
 
 /mob/living/simple_animal/hostile/asteroid/sand_lurker/Life()
-	. = ..()
-	if(.)
-		stop_automated_movement = 1
+	..()
+	stop_automated_movement = 1

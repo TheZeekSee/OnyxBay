@@ -789,22 +789,6 @@
 	..()
 	M.heal_organ_damage(0.5 * removed, 0)
 
-/datum/reagent/drink/coffee/cappuccino
-	name = "Cappuccino"
-	description = "A nice, light coffee beverage made of espresso and steamed milk."
-	taste_description = "creamy coffee"
-	color = "#c65905"
-	adj_temp = 5
-
-	glass_required = "coffeecup"
-	glass_icon_state = "cappuccino"
-	glass_name = "cappuccino"
-	glass_desc = "A nice, light coffee beverage made of espresso and steamed milk."
-
-/datum/reagent/drink/coffee/cappuccino/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-	M.heal_organ_damage(0.5 * removed, 0)
-
 /datum/reagent/drink/hot_coco
 	name = "Hot Chocolate"
 	description = "Made with love! And cocoa beans."
@@ -812,7 +796,7 @@
 	reagent_state = LIQUID
 	color = "#5B250C"
 	nutrition = 2
-	adj_temp = 30
+	adj_temp = 5
 
 	glass_required = "square"
 	glass_name = "hot chocolate"
@@ -863,6 +847,8 @@
 	color = "#ffff00"
 	adj_temp = -5
 
+	glass_required = "square"
+	glass_icon_state = "lemonade"
 	glass_desc = "Oh the nostalgia..."
 	glass_special = list(DRINK_FIZZ, DRINK_ICE)
 
@@ -2370,7 +2356,7 @@
 		M.make_jittery(5)
 		M.make_dizzy(5)
 		M.add_chemical_effect(CE_PAINKILLER, 100)
-		M.add_chemical_effect(CE_SPEEDBOOST, 1.25)
+		M.add_chemical_effect(CE_SPEEDBOOST, 0.75)
 		M.add_chemical_effect(CE_PULSE, 3)
 
 		M.druggy = max(M.druggy, 35)
@@ -2383,7 +2369,7 @@
 		M.make_dizzy(10)
 		M.add_chemical_effect(CE_PAINKILLER, 200)
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
-		M.add_chemical_effect(CE_SPEEDBOOST, 2)
+		M.add_chemical_effect(CE_SPEEDBOOST, 1)
 		M.add_chemical_effect(CE_PULSE, 4)
 
 		M.druggy = max(M.druggy, 40)

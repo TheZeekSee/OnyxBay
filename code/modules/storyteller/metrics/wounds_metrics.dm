@@ -1,7 +1,4 @@
 /datum/controller/subsystem/storyteller/proc/report_wound(mob/victim, type, severity)
-	if(!config.storyteller)
-		return
-
 	ASSERT(istype(victim)) 	     // not used yet, keep for the future
 	ASSERT(istext(type) && type) // not used yet, keep for the future
 	ASSERT(isnum(severity) && severity)
@@ -13,7 +10,7 @@
 	if (!victim.mind)
 		return
 
-	//metric._log_debug("Injury reported: victim is '[victim]', type is '[type]', severity is [severity]", verbose=TRUE)
+	metric._log_debug("Injury reported: victim is '[victim]', type is '[type]', severity is [severity]", verbose=TRUE)
 	metric.injuries_sum += severity
 
 

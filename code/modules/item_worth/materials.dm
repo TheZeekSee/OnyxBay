@@ -13,7 +13,7 @@
 /material/silver
 	value = 35
 
-/material/plasma
+/material/phoron
 	value = 200
 
 /material/stone/marble
@@ -21,9 +21,6 @@
 
 /material/steel
 	value = 4
-
-/material/diona
-	value = 5
 
 /material/steel/holographic
 	value = 0
@@ -37,10 +34,10 @@
 /material/glass/reinforced
 	value = 2
 
-/material/glass/plasma
+/material/glass/phoron
 	value = 30
 
-/material/glass/plasma/reinforced
+/material/glass/phoron/reinforced
 	value = 40
 
 /material/osmium

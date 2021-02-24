@@ -153,17 +153,11 @@
 		return M
 
 /mob/living/simple_animal/hostile/proc/Aggro()
-	if(stat == DEAD)
-		return 0
 	vision_range = aggro_vision_range
-	return 1
 
 /mob/living/simple_animal/hostile/proc/LoseAggro()
-	if(stat == DEAD)
-		return 0
 	stop_automated_movement = 0
 	vision_range = idle_vision_range
-	return 1
 
 /mob/living/simple_animal/hostile/proc/LoseTarget()
 	stance = HOSTILE_STANCE_IDLE
@@ -186,10 +180,10 @@
 	return L
 
 /mob/living/simple_animal/hostile/death(gibbed, deathmessage, show_dead_message)
-	. = ..()
-	if(.)
-		LoseAggro()
-		mouse_opacity = 1
+	LoseAggro()
+	mouse_opacity = 1
+	..(gibbed, deathmessage, show_dead_message)
+	walk(src, 0)
 
 /mob/living/simple_animal/hostile/Life()
 	. = ..()

@@ -132,10 +132,13 @@ for reference:
 				dismantle()
 			return
 
-/obj/structure/barricade/CanPass(atom/movable/mover, turf/target) //So bullets will fly over and stuff.
+/obj/structure/barricade/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)//So bullets will fly over and stuff.
+	if(air_group || (height==0))
+		return 1
 	if(istype(mover) && mover.pass_flags & PASS_FLAG_TABLE)
-		return TRUE
-	return FALSE
+		return 1
+	else
+		return 0
 
 //Actual Deployable machinery stuff
 /obj/machinery/deployable
@@ -223,10 +226,13 @@ for reference:
 			anchored = !anchored
 			icon_state = "barrier[src.locked]"
 
-	CanPass(atom/movable/mover, turf/target) //So bullets will fly over and stuff.
+	CanPass(atom/movable/mover, turf/target, height=0, air_group=0)//So bullets will fly over and stuff.
+		if(air_group || (height==0))
+			return 1
 		if(istype(mover) && mover.pass_flags & PASS_FLAG_TABLE)
-			return TRUE
-		return FALSE
+			return 1
+		else
+			return 0
 
 	proc/explode()
 

@@ -147,8 +147,8 @@
 
 
 /obj/machinery/camera/spy
-	// These cheap toys are accessible from the syndicate camera console as well
-	network = list(NETWORK_SYNDICATE)
+	// These cheap toys are accessible from the mercenary camera console as well
+	network = list(NETWORK_MERCENARY)
 
 /obj/machinery/camera/spy/New()
 	..()

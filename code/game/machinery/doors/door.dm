@@ -9,7 +9,6 @@
 	anchored = 1
 	opacity = 1
 	density = 1
-	can_atmos_pass = ATMOS_PASS_PROC
 	layer = CLOSED_DOOR_LAYER
 	var/open_layer = OPEN_DOOR_LAYER
 	var/closed_layer = CLOSED_DOOR_LAYER
@@ -34,6 +33,8 @@
 
 	// turf animation
 	var/atom/movable/overlay/c_animation = null
+
+	atmos_canpass = CANPASS_PROC
 
 /obj/machinery/door/attack_generic(mob/user, damage)
 	if(damage >= 10)
@@ -119,14 +120,10 @@
 	return
 
 
-/obj/machinery/door/CanPass(atom/movable/mover, turf/target)
+/obj/machinery/door/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
+	if(air_group) return !block_air_zones
 	if(istype(mover) && mover.pass_flags & PASS_FLAG_GLASS)
 		return !opacity
-	return !density
-
-/obj/machinery/door/CanZASPass(turf/T, is_zone)
-	if(is_zone)
-		return !block_air_zones
 	return !density
 
 
