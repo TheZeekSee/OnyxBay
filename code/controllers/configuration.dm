@@ -1,7 +1,7 @@
 var/list/gamemode_cache = list()
 
 /datum/configuration
-	var/server_name = null					// server name (for world name / status)
+	var/server_name = "Last Hope Station"					// server name (for world name / status)
 	var/server_id = null					// server id (used for separate bans storing)
 	var/server_suffix = 0					// generate numeric suffix based on server port
 	var/subserver_name = null               // subserver name in window title, ignored if null
@@ -154,7 +154,7 @@ var/list/gamemode_cache = list()
 	var/animal_delay = 0
 	var/maximum_mushrooms = 15 //After this amount alive, mushrooms will not boom boom
 
-	var/panic_server_name = "Chaotic Onyx: Nightly"
+	var/panic_server_name = "Last Hope: informal"
 	var/panic_address = "byond://15.188.4.47:2507" //Reconnect a player this linked server if this server isn't accepting new players
 
 	var/admin_legacy_system = 0	//Defines whether the server uses the legacy admin system with admins.txt or the SQL system. Config option in config.txt
@@ -200,8 +200,8 @@ var/list/gamemode_cache = list()
 	var/list/event_delay_upper = list(EVENT_LEVEL_MUNDANE = 9000,	EVENT_LEVEL_MODERATE = 27000,	EVENT_LEVEL_MAJOR = 42000)
 
 	var/aliens_allowed = 0
-	var/alien_eggs_allowed = 0
-	var/ninjas_allowed = 0
+	var/alien_eggs_allowed = 1
+	var/ninjas_allowed = 1
 	var/abandon_allowed = 1
 	var/ooc_allowed = 1
 	var/looc_allowed = 1
@@ -251,7 +251,7 @@ var/list/gamemode_cache = list()
 	var/projectile_basketball
 
 	// Splash screen options
-	var/list/lobby_images = list('icons/splashes/Hotline.gif')
+	var/list/lobby_images = list('icons/splashes/onyx_old.png')
 	var/current_lobbyscreen = null
 
 	var/db_uses_cp1251_encoding = FALSE

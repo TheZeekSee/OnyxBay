@@ -387,7 +387,7 @@
 /mob/living/carbon/slip(slipped_on, stun_duration = 8)
 	var/area/A = get_area(src)
 	if(!A.has_gravity())
-		return 0
+		return
 	if(buckled)
 		return
 	if(weakened)
@@ -397,18 +397,6 @@
 	playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
 	Weaken(Floor(stun_duration/3))
 	return 1
-
-/mob/living/carbon/slip_on_obj(obj/slipped_on, stun_duration = 8, slip_dist = 0)
-	if(!slipped_on)
-		return 0
-	if(slip("the [slipped_on.name]", stun_duration))
-		if(slip_dist && !slipped_on.anchored)
-			slipped_on.throw_at(get_edge_target_turf(slipped_on, turn(dir, 180)), slip_dist, 1)
-			for(var/i = 1 to slip_dist)
-				step(src, dir)
-			sleep(1)
-		return 1
-	return 0
 
 /mob/living/carbon/proc/add_chemical_effect(effect, magnitude = 1)
 	if(effect in chem_effects)
