@@ -711,7 +711,7 @@
 	taste_description = "peppery bitterness"
 	reagent_state = LIQUID
 	color = "#efebaa"
-	metabolism = REM * 0.025
+	metabolism = REM * 0.004
 	overdose = 6
 	scannable = 1
 	data = 0
@@ -723,14 +723,11 @@
 		M.add_chemical_effect(CE_PULSE, 1)
 	if(volume <= 0.02 && M.chem_doses[type] >= 0.05 && world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY * 0.3)
 		data = world.time
-		to_chat(M, SPAN("warning", "You feel antsy, your concentration wavers..."))
+		to_chat(M, "<span class='warning'>You feel antsy, your concentration wavers...</span>")
 	else
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY * 0.3)
 			data = world.time
-			if(volume <= 4.0)
-				to_chat(M, SPAN("notice", "You feel invigorated and calm."))
-			else
-				to_chat(M, SPAN("warning", "You feel like you should smoke less often..."))
+			to_chat(M, "<span class='notice'>You feel invigorated and calm.</span>")
 
 /datum/reagent/nicotine/overdose(mob/living/carbon/M, alien)
 	..()
@@ -743,7 +740,7 @@
 	reagent_state = SOLID
 	color = "#684b3c"
 	scannable = 1
-	var/nicotine = REM * 0.1
+	var/nicotine = REM * 0.04
 
 /datum/reagent/tobacco/affect_blood(mob/living/carbon/M, alien, removed)
 	..()
@@ -752,12 +749,12 @@
 /datum/reagent/tobacco/fine
 	name = "Fine Tobacco"
 	taste_description = "fine tobacco"
-	nicotine = REM * 0.075
+	nicotine = REM * 0.03
 
 /datum/reagent/tobacco/bad
 	name = "Terrible Tobacco"
 	taste_description = "acrid smoke"
-	nicotine = REM * 0.2
+	nicotine = REM * 0.12
 
 /datum/reagent/tobacco/liquid
 	name = "Nicotine Solution"

@@ -141,10 +141,10 @@
 		var/mob/living/carbon/human/H = target
 		var/mob/living/carbon/human/U = user
 		if(H.parrying)
-			if(H.handle_parry(U, src))
+			if(U.get_parried_w(H,src))
 				return 0
 		if(H.blocking)
-			if(H.handle_block_weapon(U, src))
+			if(U.get_blocked_w(H,src))
 				return 0
 
 	if(user.a_intent != I_HELP)

@@ -122,7 +122,6 @@
 	origin_tech = list(TECH_BIO = 10, TECH_ILLEGAL = 5)
 	attack_verb = list("attacked", "slapped", "whacked")
 	relative_size = 10
-	foreign = TRUE
 	var/mob/living/carbon/brain/brainchan = null 	//notice me, biostructure-kun~ (✿˵•́ ‸ •̀˵)
 	var/const/damage_threshold_count = 10
 	var/last_regen_time = 0
@@ -359,8 +358,8 @@
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/human
 	pass_flags = PASS_FLAG_TABLE
 	harm_intent_damage = 20
-	melee_damage_lower = 7.5
-	melee_damage_upper = 12.5
+	melee_damage_lower = 15
+	melee_damage_upper = 20
 	attacktext = "bitten"
 	attack_sound = 'sound/weapons/bite.ogg'
 	var/cloaked = 0
@@ -370,9 +369,6 @@
 	see_in_dark = 8
 	meat_amount = 1
 	see_invisible = SEE_INVISIBLE_NOLIGHTING
-	mob_size = MOB_SMALL
-	can_pull_size = ITEM_SIZE_NORMAL
-	can_pull_mobs = MOB_PULL_SAME
 
 	minbodytemp = 0
 	maxbodytemp = 350
@@ -651,8 +647,6 @@
 /mob/living/simple_animal/hostile/little_changeling/head_chan
 	maxHealth = 70
 	health = 70
-	melee_damage_lower = 17.5
-	melee_damage_upper = 22.5
 	name = "disfigured head"
 	icon_state = "gib_head"
 	icon_living = "gib_head"
@@ -661,14 +655,10 @@
 /mob/living/simple_animal/hostile/little_changeling/chest_chan
 	maxHealth = 150
 	health = 150
-	melee_damage_lower = 15.0
-	melee_damage_upper = 20.0
 	name = "disfigured chest"
 	icon_state = "gib_torso"
 	icon_living = "gib_torso"
 	meat_amount = 3
-	mob_size = MOB_MEDIUM
-	can_pull_size = ITEM_SIZE_LARGE
 
 /mob/living/simple_animal/hostile/little_changeling/leg_chan
 	maxHealth = 60
@@ -678,10 +668,9 @@
 	icon_living = "gib_leg"
 
 /mob/living/simple_animal/hostile/little_changeling/headcrab
-	maxHealth = 40
-	health = 40
-	melee_damage_lower = 5.0
-	melee_damage_upper = 7.5
+	maxHealth = 50
+	health = 50
+	harm_intent_damage = 15
 	speed = 0
 	name = "headcrab"
 	icon_state = "headcrab"
